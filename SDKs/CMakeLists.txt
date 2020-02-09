@@ -4,13 +4,12 @@ project(FRUTBuilder)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/CMake")
 
-set (projucerEXE "Before")
-
 include(JUCEHelpers)
 include(FrutHelpers)
 
-update_frut()
 update_juce()
+update_frut()
 
-message ("${projucerEXE}")
+file(COPY ${projucerEXE}
+        DESTINATION "${CMAKE_CURRENT_SOURCE_DIR}/Projucer")
 
