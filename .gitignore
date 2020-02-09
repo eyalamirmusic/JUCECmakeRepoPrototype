@@ -1,6 +1,7 @@
 *.user
 
 SDKs/FRUT
+SDKs/JUCE
 
 **/VisualStudio2017/.vs
 **/VisualStudio2017/x64
