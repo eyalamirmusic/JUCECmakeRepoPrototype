@@ -4,10 +4,10 @@ include(GitHelpers)
 
 function(configure_frut frutDirectory)
     execute_process(COMMAND
-            "-DCMAKE_BUILD_TYPE=Release"
             "cmake"
             "."
             "-DJUCE_ROOT=../JUCE"
+            "-DCMAKE_BUILD_TYPE=Release"
 
             WORKING_DIRECTORY ${frutDirectory})
 endfunction()
@@ -23,20 +23,24 @@ function(build_reprojucer frutDirectory)
             WORKING_DIRECTORY ${frutDirectory})
 endfunction()
 
-function(build_frut exeFile frutDir)
-    configure_frut(${frutDir})
-    build_reprojucer(${frutDir})
+function(get_reprojucer_exe reprojucerFile)
+
+    set(frutDir "${CMAKE_SOURCE_DIR}/SDKs/FRUT")
 
     if (APPLE)
-        set(reprojucerFile "${frutDir}/Jucer2Reprojucer/Jucer2Reprojucer")
+        set(${reprojucerFile} "${frutDir}/Jucer2Reprojucer/Jucer2Reprojucer" PARENT_SCOPE)
     else ()
         message("Remember to set up the build for non-apple systems")
     endif ()
 
-    set(${exeFile} ${reprojucerFile} PARENT_SCOPE)
 endfunction()
 
-function (get_reprojuer_file result)
+function(build_frut frutDir)
+    configure_frut(${frutDir})
+    build_reprojucer(${frutDir})
+endfunction()
+
+function(get_reprojuer_file result)
 
 endfunction()
 
@@ -45,43 +49,36 @@ macro(update_frut)
     set(frutDir "${PROJECT_SOURCE_DIR}/FRUT")
 
     update_git(${frutGit} "FRUT")
-    build_frut(jucer2reprojucerEXE ${frutDir})
+    build_frut(${frutDir})
 endmacro()
 
-macro(create_cmake jucerFile jucerFilePath)
+function(create_cmake jucerFile jucerFilePath)
+
     set(frutCMake "${frutDir}/Reprojucer.cmake")
     set(frutDir "${PROJECT_SOURCE_DIR}/FRUT")
-
-    message (${jucerFilePath})
-    message (${jucerFile})
+    get_reprojucer_exe(jucerEXE)
 
     execute_process(COMMAND
-            ${jucer2reprojucerEXE}
+            ${jucerEXE}
             ${jucerFile}
-            ${frutCMake}
-            WORKING_DIRECTORY ${frutDir})
-
-#    add_subdirectory(${jucerFilePath})
-endmacro()
-
-function (create_cmake_in_dir targetDir)
-    file(GLOB files "${targetDir}/*.jucer")
-
-    foreach(jucerFile ${files})
-        create_cmake(${jucerFile}, ${targetDir})
-    endforeach()
-
-#    FOREACH(jucer ${targetJUCER})
-#        create_cmake(${jucer}, ${targetDir})
-#    ENDFOREACH()
-
+            WORKING_DIRECTORY ${jucerFilePath} RESULT_VARIABLE rv)
+    message("rv='${rv}'")
 endfunction()
 
-function (create_cmake_in_subdirs targetDir)
+function(create_cmake_in_dir targetDir)
+    file(GLOB files "${targetDir}/*.jucer")
+
+    foreach (jucerFile ${files})
+        create_cmake(${jucerFile} ${targetDir})
+        add_subdirectory(${targetDir})
+    endforeach ()
+endfunction()
+
+function(create_cmake_in_subdirs targetDir)
     SUBDIRLIST(SUBDIRS ${targetDir})
 
-    FOREACH(subDir ${SUBDIRS})
-        set (absoluteSubDir "${targetDir}/${subDir}")
+    FOREACH (subDir ${SUBDIRS})
+        set(absoluteSubDir "${targetDir}/${subDir}")
         create_cmake_in_dir(${absoluteSubDir})
-    ENDFOREACH()
+    ENDFOREACH ()
 endfunction()
