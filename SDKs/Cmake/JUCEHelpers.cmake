@@ -21,7 +21,11 @@ endfunction()
 macro(update_juce)
     set(juceGit "https://github.com/WeAreROLI/JUCE.git")
     update_git(${juceGit} "JUCE")
-    build_projucer_func(projucerEXE)
+
+    if (alwaysBuildProjucer)
+        build_projucer_func(projucerEXE)
+    endif()
+
     set(JUCE_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/JUCE")
 endmacro()
 

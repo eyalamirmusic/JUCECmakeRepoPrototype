@@ -61,8 +61,7 @@ function(create_cmake jucerFile jucerFilePath)
     execute_process(COMMAND
             ${jucerEXE}
             ${jucerFile}
-            WORKING_DIRECTORY ${jucerFilePath} RESULT_VARIABLE rv)
-    message("rv='${rv}'")
+            WORKING_DIRECTORY ${jucerFilePath})
 endfunction()
 
 function(create_cmake_in_dir targetDir)

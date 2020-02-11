@@ -1,12 +1,12 @@
 cmake_minimum_required(VERSION 3.15)
 
 macro(sub_dir_list result curdir)
-    FILE(GLOB children RELATIVE ${curdir} ${curdir}/*)
-    SET(dirlist "")
+    file(GLOB children RELATIVE ${curdir} ${curdir}/*)
+    set(dirlist "")
 
     foreach(child ${children})
         if(IS_DIRECTORY ${curdir}/${child})
-            LIST(APPEND dirlist ${child})
+            list(APPEND dirlist ${child})
         endif()
     endforeach()
 
@@ -14,8 +14,8 @@ macro(sub_dir_list result curdir)
 endmacro()
 
 function (add_projects_from TargetDir)
-    sub_dir_list(SUBDIRS ${TargetDir})
-    foreach(subdir ${SUBDIRS})
+    sub_dir_list(subDirs ${TargetDir})
+    foreach(subdir ${subDirs})
         add_subdirectory(${subdir})
     endforeach()
 endfunction()
