@@ -70,15 +70,14 @@ function(create_cmake_in_dir targetDir)
 
     foreach (jucerFile ${files})
         create_cmake(${jucerFile} ${targetDir})
-        add_subdirectory(${targetDir})
     endforeach ()
 endfunction()
 
 function(create_cmake_in_subdirs targetDir)
-    SUBDIRLIST(SUBDIRS ${targetDir})
+    sub_dir_list(subDirs ${targetDir})
 
-    FOREACH (subDir ${SUBDIRS})
+    foreach (subDir ${subDirs})
         set(absoluteSubDir "${targetDir}/${subDir}")
         create_cmake_in_dir(${absoluteSubDir})
-    ENDFOREACH ()
+    endforeach ()
 endfunction()
