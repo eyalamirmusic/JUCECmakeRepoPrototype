@@ -26,11 +26,12 @@ endfunction()
 function(get_reprojucer_exe reprojucerFile)
 
     set(frutDir "${CMAKE_SOURCE_DIR}/SDKs/FRUT")
+    set (jucerBaseFolder "${frutDir}/Jucer2Reprojucer")
 
     if (APPLE)
-        set(${reprojucerFile} "${frutDir}/Jucer2Reprojucer/Jucer2Reprojucer" PARENT_SCOPE)
+        set(${reprojucerFile} "${jucerBaseFolder}/Jucer2Reprojucer" PARENT_SCOPE)
     else ()
-        message("Remember to set up the build for non-apple systems")
+        set(${reprojucerFile} "${jucerBaseFolder}/Release/ConsoleApp/Jucer2Reprojucer.exe" PARENT_SCOPE)
     endif ()
 
 endfunction()
@@ -56,6 +57,8 @@ function(create_cmake jucerFile jucerFilePath)
 
     set(frutCMake "${frutDir}/Reprojucer.cmake")
     set(frutDir "${PROJECT_SOURCE_DIR}/FRUT")
+
+    set (jucerEXE "Before")
     get_reprojucer_exe(jucerEXE)
 
     execute_process(COMMAND
