@@ -37,6 +37,7 @@ jucer_audio_plugin_settings(
     "Standalone"
   PLUGIN_CHARACTERISTICS
     "Plugin is a Synth"
+    "Plugin MIDI Input"
   PLUGIN_NAME "Synth"
   PLUGIN_DESCRIPTION "Synth"
   PLUGIN_MANUFACTURER "yourcompany"
@@ -46,6 +47,7 @@ jucer_audio_plugin_settings(
   PLUGIN_AAX_IDENTIFIER "com.yourcompany.Synth"
   PLUGIN_AU_EXPORT_PREFIX "SynthAU"
   PLUGIN_AU_MAIN_TYPE "kAudioUnitType_MusicDevice"
+  PLUGIN_VST_NUM_MIDI_INPUTS "16"
   PLUGIN_VST3_CATEGORY
     "Instrument"
     "Synth"

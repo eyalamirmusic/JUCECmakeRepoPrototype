@@ -5,5 +5,5 @@ project(SDKs)
 include(JUCEHelpers)
 include(FrutHelpers)
 
-update_juce()
+update_juce("develop")
 update_frut()

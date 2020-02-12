@@ -49,7 +49,7 @@ macro(update_frut)
     set(frutGit "https://github.com/McMartin/FRUT.git")
     set(frutDir "${PROJECT_SOURCE_DIR}/FRUT")
 
-    update_git(${frutGit} "FRUT")
+    update_git(${frutGit} "FRUT" "master")
     build_frut(${frutDir})
 endmacro()
 

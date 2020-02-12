@@ -18,9 +18,9 @@ function(build_projucer_func projucerEXE)
     endif ()
 endfunction()
 
-macro(update_juce)
+macro(update_juce branch)
     set(juceGit "https://github.com/WeAreROLI/JUCE.git")
-    update_git(${juceGit} "JUCE")
+    update_git(${juceGit} "JUCE" ${branch})
 
     if (alwaysBuildProjucer)
         build_projucer_func(projucerEXE)
