@@ -15,7 +15,11 @@ endmacro()
 
 function (add_projects_from TargetDir)
     sub_dir_list(subDirs ${TargetDir})
+
     foreach(subdir ${subDirs})
-        add_subdirectory(${subdir})
+        if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/${subdir}/CMakeLists.txt")
+            add_subdirectory(${subdir})
+        endif()
+
     endforeach()
 endfunction()
