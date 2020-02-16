@@ -23,8 +23,8 @@ jucer_project_begin(
 jucer_project_settings(
   PROJECT_NAME "Synth"
   PROJECT_VERSION "1.0.0"
-  REPORT_JUCE_APP_USAGE ON # Required for closed source applications without an Indie or Pro JUCE license
-  DISPLAY_THE_JUCE_SPLASH_SCREEN ON # Required for closed source applications without an Indie or Pro JUCE license
+  REPORT_JUCE_APP_USAGE OFF # Required for closed source applications without an Indie or Pro JUCE license
+  DISPLAY_THE_JUCE_SPLASH_SCREEN OFF # Required for closed source applications without an Indie or Pro JUCE license
   PROJECT_TYPE "Audio Plug-in"
   BUNDLE_IDENTIFIER "com.yourcompany.Synth"
   CXX_LANGUAGE_STANDARD "C++14"

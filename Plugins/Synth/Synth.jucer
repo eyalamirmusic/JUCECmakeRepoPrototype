@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <JUCERPROJECT id="VdGrAY" name="Synth" projectType="audioplug" jucerVersion="5.4.7"
-              pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn">
+              pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn"
+              reportAppUsage="0" displaySplashScreen="0">
   <MAINGROUP id="BG2uyr" name="Synth">
     <GROUP id="{24660B49-FBC7-1C30-DDA3-D430669392BF}" name="Source">
       <FILE id="z4B1FI" name="Synth.h" compile="0" resource="0" file="Source/Synth.h"/>
