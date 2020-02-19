@@ -20,13 +20,14 @@ endfunction()
 
 macro(update_juce branch)
     set(juceGit "https://github.com/WeAreROLI/JUCE.git")
-    update_git(${juceGit} "JUCE" ${branch})
+    update_git(${juceGit} "${globalSDKsFolder}/JUCE" ${branch})
 
     if (alwaysBuildProjucer)
         build_projucer_func(projucerEXE)
     endif ()
 
-    set(JUCE_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/JUCE")
+    set(juceDirectory "${globalSDKsFolder}/JUCE" CACHE INTERNAL "")
+    set(juceModulesDir "${juceDirectory}/modules" CACHE INTERNAL "")
 endmacro()
 
 function(add_plist_file targetName)

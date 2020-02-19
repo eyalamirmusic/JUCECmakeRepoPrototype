@@ -5,8 +5,6 @@ project("GuiAppTemplate")
 set(companyName "Eyal Amir")
 set(pluginName ${PROJECT_NAME})
 
-include(Reprojucer)
-
 jucer_project_begin(JUCER_VERSION "5.4.7" PROJECT_ID "MSisJh")
 
 set_default_jucer_project_settings()

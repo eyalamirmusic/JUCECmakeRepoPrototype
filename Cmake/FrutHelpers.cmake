@@ -50,13 +50,14 @@ endfunction()
 
 macro(update_frut)
     set(frutGit "https://github.com/McMartin/FRUT.git")
-    set(frutDirectory "${frutHelpersDir}/../FRUT" CACHE INTERNAL "")
+    set(frutDirectory "${globalSDKsFolder}/FRUT" CACHE INTERNAL "")
 
-    update_git(${frutGit} "FRUT" "master")
+    update_git(${frutGit} ${frutDirectory} "master")
     build_frut()
 
-    list(APPEND CMAKE_MODULE_PATH "${frutDirectory}/cmake")
-    set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} CACHE INTERNAL "")
+    set (frutScriptPath ${frutDirectory}/cmake)
+    list (APPEND CMAKE_MODULE_PATH ${frutScriptPath})
+    include(Reprojucer)
 
 endmacro()
 
