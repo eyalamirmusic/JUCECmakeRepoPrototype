@@ -20,12 +20,9 @@ add_juce_graphics()
 add_juce_gui_basics()
 add_juce_gui_extra()
 
-#first, add default targets
 add_jucer_mac_target()
 add_jucer_windows_target()
 add_jucer_linux_target()
 add_jucer_ios_target()
-
-#now customize your special targets:
 
 jucer_project_end()
