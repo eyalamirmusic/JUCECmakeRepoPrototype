@@ -3,7 +3,9 @@ cmake_minimum_required(VERSION 3.4)
 include(GitHelpers)
 include(DefaultJUCEConfig)
 
-function(configure_frut frutDirectory)
+set(frutHelpersDir "${CMAKE_CURRENT_LIST_DIR}" CACHE INTERNAL "")
+
+function(configure_frut)
     execute_process(COMMAND
             "cmake"
             "."
@@ -13,14 +15,13 @@ function(configure_frut frutDirectory)
             WORKING_DIRECTORY ${frutDirectory})
 endfunction()
 
-function(build_reprojucer frutDirectory)
+function(build_reprojucer)
     execute_process(COMMAND
             "cmake"
             "--build"
             "."
             "--target" "Jucer2Reprojucer"
             "--config" "Release"
-
             WORKING_DIRECTORY ${frutDirectory})
 endfunction()
 
@@ -37,9 +38,9 @@ function(get_reprojucer_exe reprojucerFile)
 
 endfunction()
 
-function(build_frut frutDir)
-    configure_frut(${frutDir})
-    build_reprojucer(${frutDir})
+function(build_frut)
+    configure_frut()
+    build_reprojucer()
 endfunction()
 
 function(get_reprojuer_file result)
@@ -49,20 +50,19 @@ endfunction()
 
 macro(update_frut)
     set(frutGit "https://github.com/McMartin/FRUT.git")
-    set(frutDir "${PROJECT_SOURCE_DIR}/FRUT")
+    set(frutDirectory "${frutHelpersDir}/../FRUT" CACHE INTERNAL "")
 
     update_git(${frutGit} "FRUT" "master")
-    build_frut(${frutDir})
+    build_frut()
 
-    list(APPEND CMAKE_MODULE_PATH "${frutDir}/cmake")
+    list(APPEND CMAKE_MODULE_PATH "${frutDirectory}/cmake")
     set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} CACHE INTERNAL "")
 
 endmacro()
 
 function(create_cmake jucerFile jucerFilePath)
 
-    set(frutCMake "${frutDir}/Reprojucer.cmake")
-    set(frutDir "${PROJECT_SOURCE_DIR}/FRUT")
+    set(frutCMake "${frutDirectory}/Reprojucer.cmake")
 
     set(jucerEXE "Before")
     get_reprojucer_exe(jucerEXE)
@@ -70,6 +70,7 @@ function(create_cmake jucerFile jucerFilePath)
     execute_process(COMMAND
             ${jucerEXE}
             ${jucerFile}
+            "--juce-modules" "${frutDirectory}/../JUCE/modules"
             WORKING_DIRECTORY ${jucerFilePath})
 endfunction()
 
