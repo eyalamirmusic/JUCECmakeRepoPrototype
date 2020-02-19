@@ -155,23 +155,6 @@ macro(add_juce_gui_extra)
     )
     endmacro()
 
-macro(add_default_jucer_modules)
-
-    add_juce_audio_basics()
-    add_juce_audio_devices()
-    add_juce_audio_formats()
-    add_juce_audio_plugin_client()
-    add_juce_audio_processors()
-    add_juce_audio_utils()
-    add_juce_core()
-    add_juce_data_structures()
-    add_juce_events()
-    add_juce_graphics()
-    add_juce_gui_basics()
-    add_juce_gui_extra()
-
-endmacro()
-
 macro(set_default_jucer_project_settings)
     jucer_project_settings(
             PROJECT_NAME ${pluginName}
@@ -203,10 +186,4 @@ macro(set_default_audio_plugin_settings)
             PLUGIN_AAX_CATEGORY "AAX_ePlugInCategory_None"
             PLUGIN_VST_LEGACY_CATEGORY "kPlugCategEffect"
     )
-endmacro()
-
-macro(create_default_audio_plugin)
-    set_default_jucer_project_settings()
-    set_default_audio_plugin_settings()
-    add_default_jucer_modules()
 endmacro()
