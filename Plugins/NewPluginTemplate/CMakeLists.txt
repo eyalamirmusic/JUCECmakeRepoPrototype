@@ -18,4 +18,7 @@ jucer_audio_plugin_settings(
         PLUGIN_CODE "Msis"
 )
 
+add_jucer_windows_target()
+add_jucer_mac_target()
+
 jucer_project_end()

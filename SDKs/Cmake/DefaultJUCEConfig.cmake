@@ -1,37 +1,23 @@
+macro (add_jucer_target targetName)
+    jucer_export_target(${targetName})
+    jucer_export_target_configuration (${targetName} NAME "Debug" DEBUG_MODE ON)
+    jucer_export_target_configuration (${targetName} NAME "Release" DEBUG_MODE OFF)
+endmacro()
 
+macro (add_jucer_mac_target)
+    add_jucer_target("Xcode (MacOSX)")
+endmacro()
 
-macro(add_default_jucer_targets)
-    jucer_export_target(
-            "Xcode (MacOSX)"
-    )
+macro(add_jucer_windows_target)
+    add_jucer_target("Visual Studio 2019")
+endmacro()
 
-    jucer_export_target_configuration(
-            "Xcode (MacOSX)"
-            NAME "Debug"
-            DEBUG_MODE ON
-    )
+macro(add_jucer_linux_target)
+    add_jucer_target("Linux Makefile")
+endmacro()
 
-    jucer_export_target_configuration(
-            "Xcode (MacOSX)"
-            NAME "Release"
-            DEBUG_MODE OFF
-    )
-
-    jucer_export_target(
-            "Visual Studio 2019"
-    )
-
-    jucer_export_target_configuration(
-            "Visual Studio 2019"
-            NAME "Debug"
-            DEBUG_MODE ON
-    )
-
-    jucer_export_target_configuration(
-            "Visual Studio 2019"
-            NAME "Release"
-            DEBUG_MODE OFF
-    )
+macro(add_jucer_ios_target)
+    add_jucer_target("Xcode (iOS)")
 endmacro()
 
 macro(add_juce_audio_basics)
@@ -223,5 +209,4 @@ macro(create_default_audio_plugin)
     set_default_jucer_project_settings()
     set_default_audio_plugin_settings()
     add_default_jucer_modules()
-    add_default_jucer_targets()
 endmacro()
