@@ -20,6 +20,13 @@ macro(add_jucer_ios_target)
     add_jucer_target("Xcode (iOS)")
 endmacro()
 
+macro(add_all_jucer_targets)
+    add_jucer_target("Xcode (MacOSX)")
+    add_jucer_target("Visual Studio 2019")
+    add_jucer_target("Linux Makefile")
+    add_jucer_target("Xcode (iOS)")
+endmacro()
+
 macro(add_juce_audio_basics)
     jucer_project_module(
             juce_audio_basics
@@ -155,13 +162,13 @@ macro(add_juce_gui_extra)
     )
     endmacro()
 
-macro(set_default_jucer_project_settings)
+macro(set_default_jucer_project_settings appType)
     jucer_project_settings(
             PROJECT_NAME ${pluginName}
             PROJECT_VERSION "1.0.0"
             REPORT_JUCE_APP_USAGE OFF # Required for closed source applications without an Indie or Pro JUCE license
             DISPLAY_THE_JUCE_SPLASH_SCREEN OFF # Required for closed source applications without an Indie or Pro JUCE license
-            PROJECT_TYPE "Audio Plug-in"
+            PROJECT_TYPE ${appType}
             BUNDLE_IDENTIFIER "com.${companyName}.${pluginName}"
             CXX_LANGUAGE_STANDARD "C++14"
     )
