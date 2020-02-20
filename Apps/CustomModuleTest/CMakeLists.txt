@@ -11,9 +11,8 @@ set_default_jucer_project_settings("GUI Application")
 
 aux_source_directory("${CMAKE_CURRENT_SOURCE_DIR}/Source" JUCER_PROJECT_FILES)
 
-add_juce_core()
-add_juce_data_structures()
-add_juce_events()
+add_juce_base_modules()
+
 add_juce_graphics()
 add_juce_gui_basics()
 add_juce_gui_extra()

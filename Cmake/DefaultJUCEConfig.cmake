@@ -162,6 +162,12 @@ macro(add_juce_gui_extra)
     )
 endmacro()
 
+macro(add_juce_base_modules)
+    add_juce_core()
+    add_juce_data_structures()
+    add_juce_events()
+endmacro()
+
 macro(add_custom_module moduleName moduleDir)
     jucer_project_module(${moduleName} PATH ${moduleDir})
 endmacro()
