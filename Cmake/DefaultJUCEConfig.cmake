@@ -1,10 +1,10 @@
-macro (add_jucer_target targetName)
+macro(add_jucer_target targetName)
     jucer_export_target(${targetName})
-    jucer_export_target_configuration (${targetName} NAME "Debug" DEBUG_MODE ON)
-    jucer_export_target_configuration (${targetName} NAME "Release" DEBUG_MODE OFF)
+    jucer_export_target_configuration(${targetName} NAME "Debug" DEBUG_MODE ON)
+    jucer_export_target_configuration(${targetName} NAME "Release" DEBUG_MODE OFF)
 endmacro()
 
-macro (add_jucer_mac_target)
+macro(add_jucer_mac_target)
     add_jucer_target("Xcode (MacOSX)")
 endmacro()
 
@@ -160,7 +160,11 @@ macro(add_juce_gui_extra)
             # JUCE_WEB_BROWSER
             # JUCE_ENABLE_LIVE_CONSTANT_EDITOR
     )
-    endmacro()
+endmacro()
+
+macro(add_custom_module moduleName moduleDir)
+    jucer_project_module(${moduleName} PATH ${moduleDir})
+endmacro()
 
 macro(set_default_jucer_project_settings appType)
     jucer_project_settings(

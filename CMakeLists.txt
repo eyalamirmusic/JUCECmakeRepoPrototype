@@ -5,6 +5,8 @@ project(JUCECMakeRepo)
 set (globalSDKsFolder ${CMAKE_CURRENT_LIST_DIR}/SDKs)
 list (APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/Cmake")
 
+set (customModulesDir ${CMAKE_CURRENT_LIST_DIR}/Modules)
+
 include(JUCEHelpers)
 include(FrutHelpers)
 
