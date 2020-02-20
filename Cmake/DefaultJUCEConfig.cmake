@@ -14,6 +14,7 @@ endmacro()
 
 macro(add_jucer_linux_target)
     add_jucer_target("Linux Makefile")
+    add_jucer_target("Code::Blocks (Linux)")
 endmacro()
 
 macro(add_jucer_ios_target)
