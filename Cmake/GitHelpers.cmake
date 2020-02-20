@@ -22,7 +22,10 @@ function(git_pull folder)
 endfunction()
 
 function(update_git gitRepo repoFolder branch)
-    git_clone(${gitRepo} ${repoFolder} ${branch})
-    git_pull(${repoFolder})
+    if (NOT EXISTS ${repoFolder})
+        git_clone(${gitRepo} ${repoFolder} ${branch})
+    else()
+        git_pull(${repoFolder})
+    endif()
 endfunction()
 
