@@ -169,6 +169,20 @@ macro(add_juce_base_modules)
     add_juce_events()
 endmacro()
 
+macro(add_juce_audio_modules)
+    add_juce_audio_devices()
+    add_juce_audio_utils()
+    add_juce_audio_basics()
+    add_juce_audio_formats()
+    add_juce_audio_processors()
+endmacro()
+
+macro(add_juce_gui_modules)
+    add_juce_graphics()
+    add_juce_gui_basics()
+    add_juce_gui_extra()
+endmacro()
+
 macro(add_custom_module moduleName moduleDir)
     jucer_project_module(${moduleName} PATH ${moduleDir})
 endmacro()
@@ -182,6 +196,8 @@ macro(set_default_jucer_project_settings appType)
             PROJECT_TYPE ${appType}
             BUNDLE_IDENTIFIER "com.${companyName}.${pluginName}"
             CXX_LANGUAGE_STANDARD "C++14"
+            INCLUDE_BINARYDATA ON
+            BINARYDATA_NAMESPACE "BinaryData"
     )
 endmacro()
 
@@ -203,5 +219,6 @@ macro(set_default_audio_plugin_settings)
             PLUGIN_RTAS_CATEGORY "ePlugInCategory_None"
             PLUGIN_AAX_CATEGORY "AAX_ePlugInCategory_None"
             PLUGIN_VST_LEGACY_CATEGORY "kPlugCategEffect"
+
     )
 endmacro()
