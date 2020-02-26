@@ -19,7 +19,8 @@ String getCmakeExporter()
     if (isMac())
         return "Xcode";
 
-    return "Visual Studio 16 2019";
+	const String quote = "\""; 
+    return quote + "Visual Studio 16 2019" + quote + " -A x64";
 }
 
 String getCmakeCommand()
