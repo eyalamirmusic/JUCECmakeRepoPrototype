@@ -9,7 +9,7 @@ File getGitRoot()
 {
     auto currentDir = File::getSpecialLocation(File::currentExecutableFile);
 
-    while (!isGitRoot(currentDir) || currentDir.isRoot())
+    while (!isGitRoot(currentDir) && !currentDir.isRoot())
         currentDir = currentDir.getParentDirectory();
 
     return currentDir;
