@@ -18,3 +18,4 @@ add_subdirectory(Plugins)
 
 #JUCE Extra: including tools like the projucer, audio plugin host, etc
 add_subdirectory(JUCE_Extras)
+add_subdirectory(JUCE_Examples)

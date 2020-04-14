@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.15)
 
-project(AudioPluginExample VERSION 0.0.1)
+project(NewPluginTemplate VERSION 0.0.1)
 
 juce_add_plugin("${PROJECT_NAME}"
         # VERSION ...                               # Set this if the plugin version is different to the project version
