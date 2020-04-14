@@ -1,31 +1,32 @@
-cmake_minimum_required(VERSION 3.4)
+cmake_minimum_required(VERSION 3.15)
 
-project("NewPluginTemplate")
+project(AudioPluginExample VERSION 0.0.1)
 
-set(companyName "Eyal Amir")
-set(pluginName ${PROJECT_NAME})
+juce_add_plugin(${PROJECT_NAME}
+        # VERSION ...                               # Set this if the plugin version is different to the project version
+        # ICON_BIG ...                              # ICON_* arguments specify a path to an image file to use as an icon for the Standalone
+        # ICON_SMALL ...
+        COMPANY_NAME "MyCompany"
+        IS_SYNTH FALSE
+        NEEDS_MIDI_INPUT TRUE
+        NEEDS_MIDI_OUTPUT FALSE
+        IS_MIDI_EFFECT FALSE
+        EDITOR_WANTS_KEYBOARD_FOCUS FALSE
+        COPY_PLUGIN_AFTER_BUILD TRUE
+        PLUGIN_MANUFACTURER_CODE Juce
+        PLUGIN_CODE Dem0
+        FORMATS AU VST3 Standalone
+        PRODUCT_NAME "Audio Plugin Example")
 
-aux_source_directory("${CMAKE_CURRENT_SOURCE_DIR}/Source" JUCER_PROJECT_FILES)
+juce_generate_juce_header(${PROJECT_NAME})
 
-jucer_project_begin(JUCER_VERSION "5.4.7" PROJECT_ID "MSisJh")
+aux_source_directory("${CMAKE_CURRENT_SOURCE_DIR}/Source" Sources)
+target_sources(${PROJECT_NAME} PRIVATE ${Sources})
 
-set_default_jucer_project_settings("Audio Plug-in")
-set_default_audio_plugin_settings()
-jucer_audio_plugin_settings(PLUGIN_MANUFACTURER_CODE "Manu"  PLUGIN_CODE "Msis")
+target_compile_definitions(AudioPluginExample
+        PUBLIC
+        JUCE_WEB_BROWSER=0
+        JUCE_USE_CURL=0
+        JUCE_VST3_CAN_REPLACE_VST2=0)
 
-add_juce_base_modules()
-
-add_juce_audio_basics()
-add_juce_audio_devices()
-add_juce_audio_formats()
-add_juce_audio_plugin_client()
-add_juce_audio_processors()
-add_juce_audio_utils()
-
-add_juce_graphics()
-add_juce_gui_basics()
-add_juce_gui_extra()
-
-add_all_jucer_targets()
-
-jucer_project_end()
+target_link_libraries(AudioPluginExample PRIVATE juce::juce_audio_utils)

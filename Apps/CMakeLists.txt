@@ -4,3 +4,4 @@ project(Apps)
 
 add_subdirectory(ConsoleAppTemplate)
 add_subdirectory(GuiAppTemplate)
+add_subdirectory(CustomModuleTest)

@@ -8,4 +8,6 @@ execute_process(COMMAND
         WORKING_DIRECTORY ${PROJECT_SOURCE_DIR})
 
 add_subdirectory(SDKs/JUCE)
+add_subdirectory(Modules)
 add_subdirectory(Apps)
+add_subdirectory(Plugins)
