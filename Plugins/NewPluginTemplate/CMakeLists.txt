@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.15)
 
 project(AudioPluginExample VERSION 0.0.1)
 
-juce_add_plugin(${PROJECT_NAME}
+juce_add_plugin("${PROJECT_NAME}"
         # VERSION ...                               # Set this if the plugin version is different to the project version
         # ICON_BIG ...                              # ICON_* arguments specify a path to an image file to use as an icon for the Standalone
         # ICON_SMALL ...
@@ -23,10 +23,10 @@ juce_generate_juce_header(${PROJECT_NAME})
 aux_source_directory("${CMAKE_CURRENT_SOURCE_DIR}/Source" Sources)
 target_sources(${PROJECT_NAME} PRIVATE ${Sources})
 
-target_compile_definitions(AudioPluginExample
+target_compile_definitions(${PROJECT_NAME}
         PUBLIC
         JUCE_WEB_BROWSER=0
         JUCE_USE_CURL=0
         JUCE_VST3_CAN_REPLACE_VST2=0)
 
-target_link_libraries(AudioPluginExample PRIVATE juce::juce_audio_utils)
+target_link_libraries(${PROJECT_NAME} PRIVATE juce::juce_audio_utils)
