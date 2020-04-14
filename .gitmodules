@@ -1,0 +1,4 @@
+[submodule "SDKs/JUCE"]
+	path = SDKs/JUCE
+	url = https://github.com/WeAreROLI/JUCE.git
+	branch = juce6

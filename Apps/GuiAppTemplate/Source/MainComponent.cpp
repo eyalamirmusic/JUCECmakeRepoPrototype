@@ -2,6 +2,7 @@
 
 MainComponent::MainComponent()
 {
+    addAndMakeVisible(helloWorld);
     setSize (600, 400);
 }
 
@@ -12,4 +13,5 @@ void MainComponent::paint (Graphics& g)
 
 void MainComponent::resized()
 {
+    helloWorld.setBounds(getLocalBounds());
 }

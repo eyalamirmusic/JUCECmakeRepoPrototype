@@ -1,8 +1,8 @@
 #include <JuceHeader.h>
 
-int main ()
+int main()
 {
-    std::cout << "Hello world";
+    Logger::writeToLog("Hello World");
 
     return 0;
 }

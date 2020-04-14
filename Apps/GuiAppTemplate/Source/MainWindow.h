@@ -5,7 +5,7 @@
 class MainWindow : public DocumentWindow
 {
 public:
-    MainWindow(const String& name);
+    explicit MainWindow(const String& name);
 
 private:
     void closeButtonPressed() override;

@@ -1,24 +1,18 @@
-cmake_minimum_required(VERSION 3.4)
+cmake_minimum_required(VERSION 3.12)
+project(CustomModuleTest VERSION 0.0.1)
 
-project("CustomModuleTest")
+juce_add_gui_app(GuiAppExample
+        PRODUCT_NAME "Custom Module Test")
 
-set(companyName "Eyal Amir")
-set(pluginName ${PROJECT_NAME})
+juce_generate_juce_header(CustomModuleTest)
 
-jucer_project_begin(JUCER_VERSION "5.4.7" PROJECT_ID "MSisJh")
+aux_source_directory("${CMAKE_CURRENT_SOURCE_DIR}/Source" Sources)
+target_sources(CustomModuleTest PRIVATE ${Sources})
 
-set_default_jucer_project_settings("GUI Application")
+target_compile_definitions(GuiAppExample PRIVATE
+        JUCE_WEB_BROWSER=0
+        JUCE_USE_CURL=0
+        JUCE_APPLICATION_NAME_STRING="$<TARGET_PROPERTY:CustomModuleTest,JUCE_PROJECT_NAME>"
+        JUCE_APPLICATION_VERSION_STRING="$<TARGET_PROPERTY:CustomModuleTest,JUCE_VERSION>")
 
-aux_source_directory("${CMAKE_CURRENT_SOURCE_DIR}/Source" JUCER_PROJECT_FILES)
-
-add_juce_base_modules()
-
-add_juce_graphics()
-add_juce_gui_basics()
-add_juce_gui_extra()
-
-add_custom_module("custom_module_test" ${customModulesDir})
-
-add_all_jucer_targets()
-
-jucer_project_end()
+target_link_libraries(GuiAppExample PRIVATE juce::juce_gui_extra)
