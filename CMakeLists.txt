@@ -1,29 +1,20 @@
-cmake_minimum_required(VERSION 3.4)
+cmake_minimum_required (VERSION 3.15)
+project(JUCECMakeRepo VERSION 0.0.1)
 
 find_package(Git QUIET REQUIRED)
-project(JUCECMakeRepo)
 
-#updating sobmodules. You can also grab JUCE in any other way
+# Update submodules (you can also grab JUCE in any other way)
 execute_process(COMMAND ${GIT_EXECUTABLE} "submodule" "update" "--init"
-        WORKING_DIRECTORY ${PROJECT_SOURCE_DIR})
+    WORKING_DIRECTORY ${PROJECT_SOURCE_DIR})
 
-#Sets the JUCE path to a variable, to allow subdirectories to know about it
-set (JUCE_PATH ${CMAKE_CURRENT_LIST_DIR}/SDKs/JUCE)
+# Add JUCE subdirectory
+option(JUCE_BUILD_EXTRAS "Add build targets for the Projucer and other tools" ON)
+option(JUCE_BUILD_EXAMPLES "Add build targets for the DemoRunner and PIPs" ON)
+add_subdirectory(SDKs/JUCE)
 
-#Adding JUCE subdirectory
-add_subdirectory(${JUCE_PATH})
-
-#adding any custom modules you might have:
+# Add custom modules
 add_subdirectory(Modules)
 
-#adding project folders:
+# Add project folders
 add_subdirectory(Apps)
 add_subdirectory(Plugins)
-
-#JUCE Extra: including tools like the projucer, audio plugin host, etc
-#you probably not need those in a real project
-add_subdirectory(JUCE_Extras)
-
-#Builds examples (Just the demo runner by default)
-#you probably not need those in real projects.
-add_subdirectory(JUCE_Examples)
