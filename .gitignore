@@ -3,6 +3,7 @@
 SDKs
 
 build
+build-ios
 
 cmake-build-debug
 cmake-build-release
