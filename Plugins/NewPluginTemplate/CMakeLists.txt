@@ -18,7 +18,10 @@ juce_add_plugin("${PROJECT_NAME}"
 
 juce_generate_juce_header(${PROJECT_NAME})
 
-aux_source_directory("${CMAKE_CURRENT_SOURCE_DIR}/Source" Sources)
+set(Sources
+        Source/PluginProcessor.cpp
+        Source/PluginEditor.cpp)
+
 target_sources(${PROJECT_NAME} PRIVATE ${Sources})
 
 target_compile_definitions(${PROJECT_NAME}

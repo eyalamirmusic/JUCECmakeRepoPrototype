@@ -4,9 +4,11 @@ juce_add_gui_app(${PROJECT_NAME} PRODUCT_NAME "Custom Module Test")
 
 juce_generate_juce_header(${PROJECT_NAME})
 
-#automatically grabs all the sources from the "Source" directory
-#you can also manually add your source files as shown in the JUCE examples
-aux_source_directory("${CMAKE_CURRENT_SOURCE_DIR}/Source" Sources)
+set(Sources
+        Source/Main.cpp
+        Source/MainComponent.cpp
+        Source/MainWindow.cpp)
+
 target_sources(${PROJECT_NAME} PRIVATE ${Sources})
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE
