@@ -1,5 +1,4 @@
-cmake_minimum_required(VERSION 3.12)
-project(ConsoleAppTemplate VERSION 0.0.1)
+project(ConsoleAppTemplate VERSION 0.1)
 
 juce_add_console_app(${PROJECT_NAME} PRODUCT_NAME "Console App Example")
 juce_generate_juce_header(${PROJECT_NAME})

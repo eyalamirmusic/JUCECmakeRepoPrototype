@@ -1,5 +1,3 @@
-cmake_minimum_required(VERSION 3.15)
-
 project(NewPluginTemplate VERSION 0.0.1)
 
 juce_add_plugin("${PROJECT_NAME}"

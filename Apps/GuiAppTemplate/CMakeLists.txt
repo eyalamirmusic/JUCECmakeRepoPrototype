@@ -1,4 +1,3 @@
-cmake_minimum_required(VERSION 3.12)
 project(GuiAppTemplate VERSION 0.0.1)
 
 juce_add_gui_app(${PROJECT_NAME} PRODUCT_NAME "Gui App Example")
