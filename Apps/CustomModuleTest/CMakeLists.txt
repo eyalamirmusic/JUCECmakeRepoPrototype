@@ -1,22 +1,21 @@
 project(CustomModuleTest VERSION 0.0.1)
 
-juce_add_gui_app(${PROJECT_NAME} PRODUCT_NAME "Custom Module Test")
+set(TargetName ${PROJECT_NAME})
 
-juce_generate_juce_header(${PROJECT_NAME})
+juce_add_gui_app(${TargetName} PRODUCT_NAME "Custom Module Test")
+juce_generate_juce_header(${TargetName})
 
-set(Sources
+target_sources(${TargetName} PRIVATE
         Source/Main.cpp
         Source/MainComponent.cpp
         Source/MainWindow.cpp)
 
-target_sources(${PROJECT_NAME} PRIVATE ${Sources})
-
-target_compile_definitions(${PROJECT_NAME} PRIVATE
+target_compile_definitions(${TargetName} PRIVATE
         JUCE_WEB_BROWSER=0
         JUCE_USE_CURL=0
-        JUCE_APPLICATION_NAME_STRING="$<TARGET_PROPERTY:CustomModuleTest,JUCE_PROJECT_NAME>"
-        JUCE_APPLICATION_VERSION_STRING="$<TARGET_PROPERTY:CustomModuleTest,JUCE_VERSION>")
+        JUCE_APPLICATION_NAME_STRING="$<TARGET_PROPERTY:${TargetName},JUCE_PROJECT_NAME>"
+        JUCE_APPLICATION_VERSION_STRING="$<TARGET_PROPERTY:${TargetName},JUCE_VERSION>")
 
-target_link_libraries(${PROJECT_NAME} PRIVATE
+target_link_libraries(${TargetName} PRIVATE
         juce::juce_gui_extra
         custom_module_test)

@@ -1,6 +1,8 @@
 project(NewPluginTemplate VERSION 0.0.1)
 
-juce_add_plugin("${PROJECT_NAME}"
+set (BaseTargetName NewPluginTemplate)
+
+juce_add_plugin("${BaseTargetName}"
         # VERSION ...                               # Set this if the plugin version is different to the project version
         # ICON_BIG ...                              # ICON_* arguments specify a path to an image file to use as an icon for the Standalone
         # ICON_SMALL ...
@@ -16,18 +18,16 @@ juce_add_plugin("${PROJECT_NAME}"
         FORMATS AU VST3 Standalone
         PRODUCT_NAME "Audio Plugin Example")
 
-juce_generate_juce_header(${PROJECT_NAME})
+juce_generate_juce_header(${BaseTargetName})
 
-set(Sources
+target_sources(${BaseTargetName} PRIVATE
         Source/PluginProcessor.cpp
         Source/PluginEditor.cpp)
 
-target_sources(${PROJECT_NAME} PRIVATE ${Sources})
-
-target_compile_definitions(${PROJECT_NAME}
+target_compile_definitions(${BaseTargetName}
         PUBLIC
         JUCE_WEB_BROWSER=0
         JUCE_USE_CURL=0
         JUCE_VST3_CAN_REPLACE_VST2=0)
 
-target_link_libraries(${PROJECT_NAME} PRIVATE juce::juce_audio_utils)
+target_link_libraries(${BaseTargetName} PRIVATE juce::juce_audio_utils)
