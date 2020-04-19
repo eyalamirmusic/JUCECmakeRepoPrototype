@@ -13,9 +13,9 @@ add_subdirectory(Apps)
 add_subdirectory(Plugins)
 
 #JUCE Extra: including tools like the projucer, audio plugin host, etc
-#you probably not need those in a real project
+#you probably don't need those in a real project
 add_subdirectory(JUCE_Extras)
 
 #Builds examples (Just the demo runner by default)
-#you probably not need those in real projects.
+#you probably don't need those in real projects.
 add_subdirectory(JUCE_Examples)
