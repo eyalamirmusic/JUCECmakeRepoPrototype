@@ -1,17 +1,9 @@
-cmake_minimum_required(VERSION 3.4)
+cmake_minimum_required(VERSION 3.12)
 
-find_package(Git QUIET REQUIRED)
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/Cmake")
+find_package(JUCE-GIT REQUIRED)
+
 project(JUCECMakeRepo)
-
-#updating sobmodules. You can also grab JUCE in any other way
-execute_process(COMMAND ${GIT_EXECUTABLE} "submodule" "update" "--init"
-        WORKING_DIRECTORY ${PROJECT_SOURCE_DIR})
-
-#Sets the JUCE path to a variable, to allow subdirectories to know about it
-set (JUCE_PATH ${CMAKE_CURRENT_LIST_DIR}/SDKs/JUCE)
-
-#Adding JUCE subdirectory
-add_subdirectory(${JUCE_PATH})
 
 #adding any custom modules you might have:
 add_subdirectory(Modules)
