@@ -8,7 +8,7 @@ function (add_external_juce_folder folder)
 endfunction()
 
 add_external_juce_folder(extras/AudioPluginHost)
-add_external_juce_folder(examples/DemoRunner)
+#add_external_juce_folder(examples/DemoRunner)
 
 #You can also add any other project (except for Projucer, which isn't supported):
 

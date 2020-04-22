@@ -17,5 +17,5 @@ target_compile_definitions(${TargetName} PRIVATE
         JUCE_APPLICATION_VERSION_STRING="$<TARGET_PROPERTY:${TargetName},JUCE_VERSION>")
 
 target_link_libraries(${TargetName} PRIVATE
-        juce::juce_gui_extra
-        custom_module_test)
+        custom_module_test
+        juce::juce_gui_extra)
