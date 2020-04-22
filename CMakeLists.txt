@@ -1,9 +1,8 @@
 cmake_minimum_required(VERSION 3.12)
-
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/CMake")
-find_package(JUCE-GIT REQUIRED)
-
 project(JUCECMakeRepo)
+
+#Updates or clones JUCE from git, and configures it for subdirectories:
+include (CMake/FindJUCE-GIT.cmake)
 
 #adding any custom modules you might have:
 add_subdirectory(Modules)
@@ -12,10 +11,7 @@ add_subdirectory(Modules)
 add_subdirectory(Apps)
 add_subdirectory(Plugins)
 
-#JUCE Extra: including tools like the projucer, audio plugin host, etc
-#you probably don't need those in a real project
+#JUCE Extra: including tools like Audio Plugin Host, etc
+#This is a helpful class in case you need a JUCE tool as a part of your work process
 add_subdirectory(JUCE_Extras)
 
-#Builds examples (Just the demo runner by default)
-#you probably don't need those in real projects.
-add_subdirectory(JUCE_Examples)
