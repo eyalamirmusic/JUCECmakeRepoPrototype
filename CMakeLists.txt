@@ -1,8 +1,11 @@
 cmake_minimum_required(VERSION 3.12)
 project(JUCECMakeRepo)
 
-#Updates or clones JUCE from git, and configures it for subdirectories:
-include (CMake/FindJUCE-GIT.cmake)
+#adding my own custom git functions, to save some boilerplate
+include (CMake/GitFunctions.cmake)
+
+#calling my own custom function to grab JUCE 6 from git
+add_subdirectory_from_git(JUCE "https://github.com/juce-framework/juce" juce6)
 
 #adding any custom modules you might have:
 add_subdirectory(Modules)
