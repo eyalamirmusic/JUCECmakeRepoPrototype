@@ -2,6 +2,13 @@ project(NewPluginTemplate VERSION 0.0.1)
 
 set (BaseTargetName NewPluginTemplate)
 
+#Post build is temporarily broken on Linux
+if (CMAKE_SYSTEM_NAME STREQUAL "Linux")
+    set(postBuild FALSE)
+else()
+    set(postBuild TRUE)
+endif()
+
 juce_add_plugin("${BaseTargetName}"
         # VERSION ...                               # Set this if the plugin version is different to the project version
         # ICON_BIG ...                              # ICON_* arguments specify a path to an image file to use as an icon for the Standalone
@@ -12,7 +19,7 @@ juce_add_plugin("${BaseTargetName}"
         NEEDS_MIDI_OUTPUT FALSE
         IS_MIDI_EFFECT FALSE
         EDITOR_WANTS_KEYBOARD_FOCUS FALSE
-        COPY_PLUGIN_AFTER_BUILD TRUE
+        COPY_PLUGIN_AFTER_BUILD ${postBuild}
         PLUGIN_MANUFACTURER_CODE Juce
         PLUGIN_CODE Dem0
         FORMATS AU VST3 Standalone
