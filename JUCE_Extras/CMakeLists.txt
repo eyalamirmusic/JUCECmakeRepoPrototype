@@ -4,7 +4,7 @@ project(JUCE_Extras VERSION 1.0)
 #or as a reference, such as audio plugin host, demo runner, etc.
 
 function (add_external_juce_folder folder)
-    add_subdirectory("${JUCE_SOURCE_ROOT}/${folder}" ${CMAKE_CURRENT_BINARY_DIR}/${folder})
+    add_subdirectory("${JUCE_SOURCE_DIR}/${folder}" ${CMAKE_CURRENT_BINARY_DIR}/${folder})
 endfunction()
 
 add_external_juce_folder(extras/AudioPluginHost)
