@@ -1,1 +1,2 @@
 add_subdirectory(NewPluginTemplate)
+add_subdirectory(PluginWithCustomModule)

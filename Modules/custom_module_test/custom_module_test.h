@@ -10,13 +10,13 @@
       name:             custom_module_test
       description:      custom_module_test
       license:          GPL/Commercial
-      dependencies:     juce_gui_basics
+      dependencies:     juce_gui_extra
 
      END_JUCE_MODULE_DECLARATION
 
 #endif
 
-#include <juce_gui_basics/juce_gui_basics.h>
+#include <juce_gui_extra/juce_gui_extra.h>
 
 #include "Source/DummyLabel.h"
 
