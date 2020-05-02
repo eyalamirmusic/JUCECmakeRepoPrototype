@@ -5,10 +5,10 @@ project(JUCECMakeRepo)
 include (CMake/GitFunctions.cmake)
 
 #calling my custom function to grab JUCE 6 from git:
-update_from_git(JUCE "https://github.com/juce-framework/juce" juce6)
+update_from_git(juce "https://github.com/juce-framework/juce" juce6)
 
 #adding juce as a subdirectory:
-add_subdirectory(${JUCE_SOURCE_DIR})
+add_subdirectory(${juce_SOURCE_DIR})
 
 #adding any custom modules you might have:
 add_subdirectory(Modules)
