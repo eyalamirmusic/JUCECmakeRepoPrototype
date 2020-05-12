@@ -10,7 +10,7 @@ public:
     }
     bool moreThanOneInstanceAllowed() override { return true; }
 
-    void initialise(const String& commandLine) override
+    void initialise(const String& /*commandLine*/) override
     {
         mainWindow = std::make_unique<MainWindow>(getApplicationName());
     }
@@ -19,7 +19,7 @@ public:
 
     void systemRequestedQuit() override { quit(); }
 
-    void anotherInstanceStarted(const String& commandLine) override {}
+    void anotherInstanceStarted(const String& /*commandLine*/) override {}
 
 private:
     std::unique_ptr<MainWindow> mainWindow;

@@ -11,4 +11,9 @@ target_compile_definitions(${TargetName} PRIVATE
         JUCE_WEB_BROWSER=0
         JUCE_USE_CURL=0)
 
-target_link_libraries(${TargetName} PRIVATE juce::juce_core)
+target_link_libraries(${TargetName} PRIVATE
+        juce::juce_recommended_config_flags
+        juce::juce_recommended_lto_flags
+        juce::juce_recommended_warning_flags
+        juce::juce_core)
+

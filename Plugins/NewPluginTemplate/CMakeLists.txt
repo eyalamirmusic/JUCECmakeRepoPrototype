@@ -37,4 +37,8 @@ target_compile_definitions(${BaseTargetName}
         JUCE_USE_CURL=0
         JUCE_VST3_CAN_REPLACE_VST2=0)
 
-target_link_libraries(${BaseTargetName} PRIVATE juce::juce_audio_utils)
+target_link_libraries(${BaseTargetName} PRIVATE
+        juce::juce_audio_utils
+        juce::juce_recommended_config_flags
+        juce::juce_recommended_lto_flags
+        juce::juce_recommended_warning_flags)
