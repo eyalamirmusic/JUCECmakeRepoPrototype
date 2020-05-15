@@ -1,3 +1,4 @@
 add_subdirectory(ConsoleAppTemplate)
 add_subdirectory(GuiAppTemplate)
 add_subdirectory(CustomModuleTest)
+add_subdirectory(AutomaticBinaryData)
