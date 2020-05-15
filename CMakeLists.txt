@@ -16,7 +16,3 @@ add_subdirectory(Modules)
 #adding project folders:
 add_subdirectory(Apps)
 add_subdirectory(Plugins)
-
-#JUCE Extra: including tools like Audio Plugin Host, etc
-#This is a helpful subdirectory in case you need a JUCE tool as a part of your work process
-add_subdirectory(JUCE_Extras)

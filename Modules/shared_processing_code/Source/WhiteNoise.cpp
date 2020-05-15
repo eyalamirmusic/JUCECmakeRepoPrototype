@@ -16,7 +16,7 @@ void Oscillator::process(juce::AudioBuffer<float>& buffer) noexcept
 {
     for (int sample = 0; sample < buffer.getNumSamples(); ++sample)
     {
-        auto nextSample = samples[samplePos++];
+        auto nextSample = samples[(size_t)samplePos++];
 
         if (samplePos >= (int) samples.size())
             samplePos = 0;

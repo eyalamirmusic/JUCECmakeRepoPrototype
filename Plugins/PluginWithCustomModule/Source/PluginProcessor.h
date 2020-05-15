@@ -8,7 +8,7 @@ public:
     PluginWithCustomModule();
 
     void prepareToPlay(double sampleRate, int blockSize) override;
-    void releaseResources() override {};
+    void releaseResources() override {}
 
     bool isBusesLayoutSupported(const BusesLayout&) const override { return true; }
 
@@ -33,7 +33,7 @@ public:
     int getNumPrograms() override { return 1; }
     int getCurrentProgram() override { return 0; }
     void setCurrentProgram(int) override {}
-    const String getProgramName(int) override { return String(); };
+    const String getProgramName(int) override { return String(); }
     void changeProgramName(int, const String& /*newName*/) override {}
 
     void getStateInformation(MemoryBlock& /*destData*/) override {}
