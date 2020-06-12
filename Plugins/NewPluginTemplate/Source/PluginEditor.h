@@ -6,6 +6,7 @@
 class NewPluginTemplateAudioProcessorEditor  : public AudioProcessorEditor
 {
 public:
+
     explicit NewPluginTemplateAudioProcessorEditor (NewPluginTemplateAudioProcessor&);
 
     void paint (Graphics&) override;
