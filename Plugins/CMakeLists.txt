@@ -1,3 +1,3 @@
 add_subdirectory(NewPluginTemplate)
 add_subdirectory(PluginWithCustomModule)
-add_subdirectory(CustomStandAloneFilter)
+add_subdirectory(CustomStandaloneFilter)
