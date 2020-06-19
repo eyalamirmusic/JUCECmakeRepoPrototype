@@ -1,6 +1,6 @@
 #pragma once
 
-#include <JuceHeader.h>
+#include "CommonHeaders.h"
 
 class MainComponent   : public Component
 {

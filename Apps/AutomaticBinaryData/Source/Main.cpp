@@ -3,11 +3,8 @@
 class GuiAppTemplateApplication : public JUCEApplication
 {
 public:
-    const String getApplicationName() override { return ProjectInfo::projectName; }
-    const String getApplicationVersion() override
-    {
-        return ProjectInfo::versionString;
-    }
+    const String getApplicationName() override { return "Automatic Binary Data"; }
+    const String getApplicationVersion() override { return "0.3"; }
     bool moreThanOneInstanceAllowed() override { return true; }
 
     void initialise(const String& /*commandLine*/) override

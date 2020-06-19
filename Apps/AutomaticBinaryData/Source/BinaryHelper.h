@@ -1,7 +1,6 @@
 #pragma once
 
-#include "BinaryData.h"
-#include <JuceHeader.h>
+#include "CommonHeaders.h"
 
 //Helper classes to automatically fetch all binary data assets
 

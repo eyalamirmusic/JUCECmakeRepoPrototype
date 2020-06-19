@@ -18,7 +18,6 @@ function(add_images_from_directory target imagesSubFolder)
 endfunction()
 
 juce_add_gui_app(${TargetName} PRODUCT_NAME "Automatic Binary Data")
-juce_generate_juce_header(${TargetName})
 
 target_sources(${TargetName} PRIVATE
         Source/Main.cpp
