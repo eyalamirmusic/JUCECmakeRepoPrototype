@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.12)
 project(JUCECMakeRepo)
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS TRUE)
+
 #adding my own custom git functions, to save some boilerplate::
 include (CMake/GitFunctions.cmake)
 
