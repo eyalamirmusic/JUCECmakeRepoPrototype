@@ -3,16 +3,16 @@ project(JUCECMakeRepo)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS TRUE)
 
-#adding my own custom git functions, to save some boilerplate::
+#adding my own custom git functions, to save some boilerplate:
 include (CMake/GitFunctions.cmake)
 
 #calling my custom function to grab JUCE 6 from git:
-update_from_git(juce "https://github.com/juce-framework/juce" juce6)
+update_from_git(juce "https://github.com/juce-framework/juce" develop)
 
 #set any of these to "ON" if you want to build one of the juce examples
 #or extras (Projucer/AudioPluginHost, etc):
 option(JUCE_BUILD_EXTRAS "Build JUCE Extras" OFF)
-option(JUCE_BUILD_EXAMPLES "Build JUCE Examples" OFF)
+option(JUCE_BUILD_EXAMPLES "Build JUCE Examples" ON)
 
 #adding juce as a subdirectory:
 add_subdirectory(${juce_SOURCE_DIR})
