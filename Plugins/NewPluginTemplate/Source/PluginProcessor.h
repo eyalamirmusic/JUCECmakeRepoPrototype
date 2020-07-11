@@ -2,6 +2,18 @@
 
 #include <JuceHeader.h>
 
+struct Parameters
+{
+    void add(AudioProcessor& processor) const
+    {
+        processor.addParameter(gain);
+        processor.addParameter(enable);
+    }
+
+    AudioParameterFloat* gain = new AudioParameterFloat("Gain", "Gain", 0.f, 1.f, 0.5f);
+    AudioParameterBool* enable = new AudioParameterBool("Enable", "Enable", true);
+};
+
 class NewPluginTemplateAudioProcessor : public AudioProcessor
 {
 public:
@@ -34,4 +46,5 @@ public:
     void setStateInformation(const void* /*data*/, int /*sizeInBytes*/) override {}
 
 private:
+    Parameters parameters;
 };

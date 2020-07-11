@@ -1,8 +1,11 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 
+constexpr bool shouldUseGenericEditor = true;
+
 NewPluginTemplateAudioProcessor::NewPluginTemplateAudioProcessor()
 {
+    parameters.add(*this);
 }
 
 void NewPluginTemplateAudioProcessor::prepareToPlay(double /*sampleRate*/, int /*blockSize*/)
@@ -14,13 +17,18 @@ void NewPluginTemplateAudioProcessor::processBlock(AudioBuffer<float>& buffer,
                                                    MidiBuffer& midiMessages)
 
 {
-    midiMessages.clear();
-    buffer.clear();
+    if (parameters.enable->get())
+        buffer.applyGain(parameters.gain->get());
+    else
+        buffer.clear();
 }
 
 AudioProcessorEditor* NewPluginTemplateAudioProcessor::createEditor()
 {
-    return new NewPluginTemplateAudioProcessorEditor(*this);
+    if (shouldUseGenericEditor)
+        return new GenericAudioProcessorEditor(*this);
+    else
+        return new NewPluginTemplateAudioProcessorEditor(*this);
 }
 
 AudioProcessor* JUCE_CALLTYPE createPluginFilter()
