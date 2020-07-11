@@ -14,7 +14,7 @@ void NewPluginTemplateAudioProcessor::prepareToPlay(double /*sampleRate*/, int /
 }
 
 void NewPluginTemplateAudioProcessor::processBlock(AudioBuffer<float>& buffer,
-                                                   MidiBuffer& midiMessages)
+                                                   MidiBuffer& /*midiMessages*/)
 
 {
     if (parameters.enable->get())
