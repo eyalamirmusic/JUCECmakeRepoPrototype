@@ -1,18 +1,6 @@
 #pragma once
 
-#include <JuceHeader.h>
-
-struct Parameters
-{
-    void add(AudioProcessor& processor) const
-    {
-        processor.addParameter(gain);
-        processor.addParameter(enable);
-    }
-
-    AudioParameterFloat* gain = new AudioParameterFloat("Gain", "Gain", 0.f, 1.f, 0.5f);
-    AudioParameterBool* enable = new AudioParameterBool("Enable", "Enable", true);
-};
+#include "Parameters.h"
 
 class NewPluginTemplateAudioProcessor : public AudioProcessor
 {
@@ -47,4 +35,5 @@ public:
 
 private:
     Parameters parameters;
+    AudioProcessorValueTreeState apvts {*this, nullptr, "Plugin", parameters.getLayout()};
 };

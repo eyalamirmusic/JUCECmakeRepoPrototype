@@ -5,7 +5,7 @@ constexpr bool shouldUseGenericEditor = true;
 
 NewPluginTemplateAudioProcessor::NewPluginTemplateAudioProcessor()
 {
-    parameters.add(*this);
+
 }
 
 void NewPluginTemplateAudioProcessor::prepareToPlay(double /*sampleRate*/, int /*blockSize*/)
