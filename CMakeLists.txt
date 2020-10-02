@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.16)
 project(JUCECMakeRepo)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS TRUE)
