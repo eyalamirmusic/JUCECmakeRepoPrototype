@@ -21,9 +21,13 @@ option(JUCE_BUILD_EXAMPLES "Build JUCE Examples" OFF)
 #adding juce as a subdirectory:
 add_subdirectory(${juce_SOURCE_DIR})
 
-#adding any custom modules you might have:
-add_subdirectory(Modules)
+option(BUILD_JUCE_PROTOTYPE_EXAMPES "Build JUCE prototype examples" ON)
 
-#adding project folders:
-add_subdirectory(Apps)
-add_subdirectory(Plugins)
+if (${BUILD_JUCE_PROTOTYPE_EXAMPES})
+    #adding any custom modules you might have:
+    add_subdirectory(Modules)
+
+    #adding project folders:
+    add_subdirectory(Apps)
+    add_subdirectory(Plugins)
+endif()
