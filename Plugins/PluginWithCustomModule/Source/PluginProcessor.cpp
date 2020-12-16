@@ -1,29 +1,24 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 
-PluginWithCustomModule::PluginWithCustomModule()
-{
-
-}
-
-void PluginWithCustomModule::prepareToPlay(double /*sampleRate*/, int /*blockSize*/)
-{
-
-}
-
-void PluginWithCustomModule::processBlock(AudioBuffer<float>& buffer,
-                                                   MidiBuffer&)
+void PluginWithCustomModule::processBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer&)
 
 {
     whiteNoise.process(buffer);
 }
 
-AudioProcessorEditor* PluginWithCustomModule::createEditor()
+juce::AudioProcessorEditor* PluginWithCustomModule::createEditor()
 {
     return new PluginWithCustomModuleEditor(*this);
 }
 
-AudioProcessor* JUCE_CALLTYPE createPluginFilter()
+juce::AudioProcessor::BusesProperties PluginWithCustomModule::getBusesProperties()
+{
+    auto stereo = juce::AudioChannelSet::stereo();
+    return BusesProperties().withOutput("Output", stereo, true);
+}
+
+juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
     return new PluginWithCustomModule();
 }

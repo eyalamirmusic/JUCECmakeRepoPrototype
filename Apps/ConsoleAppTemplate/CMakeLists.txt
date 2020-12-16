@@ -3,7 +3,6 @@ project(ConsoleAppTemplate VERSION 0.1)
 set (TargetName ${PROJECT_NAME})
 
 juce_add_console_app(${TargetName} PRODUCT_NAME "Console App Example")
-juce_generate_juce_header(${TargetName})
 
 target_sources(${TargetName} PRIVATE Source/Main.cpp)
 

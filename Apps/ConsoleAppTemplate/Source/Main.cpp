@@ -1,8 +1,8 @@
-#include <JuceHeader.h>
+#include <juce_core/juce_core.h>
 
 int main()
 {
-    Logger::writeToLog("Hello World");
+    juce::Logger::writeToLog("Hello World");
 
     return 0;
 }

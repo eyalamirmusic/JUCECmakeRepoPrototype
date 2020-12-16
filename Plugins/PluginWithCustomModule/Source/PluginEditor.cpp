@@ -2,14 +2,14 @@
 #include "PluginEditor.h"
 
 PluginWithCustomModuleEditor::PluginWithCustomModuleEditor(PluginWithCustomModule& p)
-    : AudioProcessorEditor(&p)
+    : juce::AudioProcessorEditor(&p)
 {
     setSize(400, 300);
 }
 
-void PluginWithCustomModuleEditor::paint(Graphics& g)
+void PluginWithCustomModuleEditor::paint(juce::Graphics& g)
 {
-    g.fillAll(getLookAndFeel().findColour(ResizableWindow::backgroundColourId));
+    g.fillAll(getLookAndFeel().findColour(juce::ResizableWindow::backgroundColourId));
 }
 
 void PluginWithCustomModuleEditor::resized()

@@ -1,13 +1,12 @@
 #include "MainWindow.h"
 
-class GuiAppTemplateApplication : public JUCEApplication
+namespace GuiApp
+{
+class GuiAppTemplateApplication : public juce::JUCEApplication
 {
 public:
-    const String getApplicationName() override { return ProjectInfo::projectName; }
-    const String getApplicationVersion() override
-    {
-        return ProjectInfo::versionString;
-    }
+    const String getApplicationName() override { return JUCE_APPLICATION_NAME_STRING; }
+    const String getApplicationVersion() override { return JUCE_APPLICATION_VERSION_STRING; }
     bool moreThanOneInstanceAllowed() override { return true; }
 
     void initialise(const String& /*commandLine*/) override
@@ -27,3 +26,5 @@ private:
 
 // This macro generates the main() routine that launches the app.
 START_JUCE_APPLICATION(GuiAppTemplateApplication)
+
+} // namespace GuiApp

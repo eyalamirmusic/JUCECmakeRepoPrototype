@@ -1,15 +1,12 @@
 #pragma once
 
-#include <JuceHeader.h>
 #include "PluginProcessor.h"
 
-class NewPluginTemplateAudioProcessorEditor  : public AudioProcessorEditor
+class NewPluginTemplateAudioProcessorEditor : public juce::AudioProcessorEditor
 {
 public:
+    explicit NewPluginTemplateAudioProcessorEditor(NewPluginTemplateAudioProcessor&);
 
-    explicit NewPluginTemplateAudioProcessorEditor (NewPluginTemplateAudioProcessor&);
-
-    void paint (Graphics&) override;
-    void resized() override;
-
+    void paint(juce::Graphics&) override;
+    void resized() override {}
 };

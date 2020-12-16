@@ -2,10 +2,12 @@
 
 #include "MainComponent.h"
 
-class MainWindow : public DocumentWindow
+namespace GuiApp
+{
+class MainWindow : public juce::DocumentWindow
 {
 public:
-    explicit MainWindow(const String& name);
+    MainWindow(const String& name);
 
 private:
     void closeButtonPressed() override;
@@ -13,3 +15,5 @@ private:
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainWindow)
 };
+}
+

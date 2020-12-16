@@ -8,11 +8,8 @@ NewPluginTemplateAudioProcessorEditor::NewPluginTemplateAudioProcessorEditor(
     setSize(400, 300);
 }
 
-void NewPluginTemplateAudioProcessorEditor::paint(Graphics& g)
+void NewPluginTemplateAudioProcessorEditor::paint(juce::Graphics& g)
 {
-    g.fillAll(getLookAndFeel().findColour(ResizableWindow::backgroundColourId));
+    g.fillAll(getLookAndFeel().findColour(juce::ResizableWindow::backgroundColourId));
 }
 
-void NewPluginTemplateAudioProcessorEditor::resized()
-{
-}

@@ -1,6 +1,8 @@
 #pragma once
 
-class DummyLabel: public juce::Component
+namespace CustomModule
+{
+class DummyLabel : public juce::Component
 {
 public:
     DummyLabel();
@@ -10,3 +12,5 @@ public:
 private:
     juce::Label label;
 };
+
+} // namespace CustomModule

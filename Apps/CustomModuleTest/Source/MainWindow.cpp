@@ -1,5 +1,7 @@
 #include "MainWindow.h"
 
+namespace GuiApp
+{
 constexpr bool isMobile()
 {
 #if JUCE_IOS || JUCE_ANDROID
@@ -28,11 +30,13 @@ MainWindow::MainWindow(const String& name)
 
 void MainWindow::closeButtonPressed()
 {
-    JUCEApplication::getInstance()->systemRequestedQuit();
+    juce::JUCEApplication::getInstance()->systemRequestedQuit();
 }
 
 Colour MainWindow::getBackgroundColour()
 {
-    return Desktop::getInstance().getDefaultLookAndFeel().findColour(
+    return juce::Desktop::getInstance().getDefaultLookAndFeel().findColour(
         ResizableWindow::backgroundColourId);
 }
+
+} // namespace GuiApp

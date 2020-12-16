@@ -1,4 +1,5 @@
-
+namespace CustomModule
+{
 DummyLabel::DummyLabel()
 {
     addAndMakeVisible(label);
@@ -12,3 +13,5 @@ void DummyLabel::resized()
 {
     label.setBounds(getLocalBounds());
 }
+
+} // namespace CustomModule

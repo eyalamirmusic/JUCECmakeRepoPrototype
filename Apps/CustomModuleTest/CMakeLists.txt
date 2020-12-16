@@ -3,7 +3,6 @@ project(CustomModuleTest VERSION 0.0.1)
 set(TargetName ${PROJECT_NAME})
 
 juce_add_gui_app(${TargetName} PRODUCT_NAME "Custom Module Test")
-juce_generate_juce_header(${TargetName})
 
 target_sources(${TargetName} PRIVATE
         Source/Main.cpp

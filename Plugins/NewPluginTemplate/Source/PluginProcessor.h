@@ -2,22 +2,22 @@
 
 #include "Parameters.h"
 
-class NewPluginTemplateAudioProcessor : public AudioProcessor
+class NewPluginTemplateAudioProcessor : public juce::AudioProcessor
 {
 public:
     NewPluginTemplateAudioProcessor();
 
-    void prepareToPlay(double sampleRate, int blockSize) override;
+    void prepareToPlay(double /*sampleRate*/, int /*blockSize*/) override {}
     void releaseResources() override {}
 
     bool isBusesLayoutSupported(const BusesLayout&) const override { return true; }
 
-    void processBlock(AudioBuffer<float>&, MidiBuffer&) override;
+    void processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&) override;
 
-    AudioProcessorEditor* createEditor() override;
+    juce::AudioProcessorEditor* createEditor() override;
     bool hasEditor() const override { return true; }
 
-    const String getName() const override { return JucePlugin_Name; }
+    const juce::String getName() const override { return JucePlugin_Name; }
 
     bool acceptsMidi() const override { return true; }
     bool producesMidi() const override { return false; }
@@ -27,13 +27,12 @@ public:
     int getNumPrograms() override { return 1; }
     int getCurrentProgram() override { return 0; }
     void setCurrentProgram(int) override {}
-    const String getProgramName(int) override { return String(); }
-    void changeProgramName(int, const String& /*newName*/) override {}
+    const juce::String getProgramName(int) override { return juce::String(); }
+    void changeProgramName(int, const juce::String& /*newName*/) override {}
 
-    void getStateInformation(MemoryBlock& /*destData*/) override {}
+    void getStateInformation(juce::MemoryBlock& /*destData*/) override {}
     void setStateInformation(const void* /*data*/, int /*sizeInBytes*/) override {}
 
 private:
     Parameters parameters;
-    AudioProcessorValueTreeState apvts {*this, nullptr, "Plugin", parameters.getLayout()};
 };

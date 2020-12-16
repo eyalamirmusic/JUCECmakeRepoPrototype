@@ -1,17 +1,19 @@
 #pragma once
 
-#include <JuceHeader.h>
+#include "CommonHeader.h"
 
-class MainComponent   : public Component
+namespace GuiApp
+{
+class MainComponent : public Component
 {
 public:
-
     MainComponent();
 
-    void paint (Graphics&) override;
+    void paint(Graphics&) override;
     void resized() override;
 
 private:
-    DummyLabel dummyLabel;
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
+    CustomModule::DummyLabel dummyLabel;
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainComponent)
 };
+} // namespace GuiApp

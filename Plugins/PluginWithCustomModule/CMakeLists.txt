@@ -18,8 +18,6 @@ juce_add_plugin("${BaseTargetName}"
         FORMATS AU VST3 Standalone
         PRODUCT_NAME "Audio Plugin Example")
 
-juce_generate_juce_header(${BaseTargetName})
-
 target_sources(${BaseTargetName} PRIVATE
         Source/PluginProcessor.cpp
         Source/PluginEditor.cpp)
