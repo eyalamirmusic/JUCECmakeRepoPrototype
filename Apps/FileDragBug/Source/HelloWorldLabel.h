@@ -10,7 +10,7 @@ struct HelloWorldLabel
 {
     HelloWorldLabel()
     {
-        setText("HelloWorld", juce::dontSendNotification);
+        setText("Drag Files Here", juce::dontSendNotification);
         setJustificationType(juce::Justification::centred);
         setFont(juce::Font(20));
     }
@@ -22,7 +22,7 @@ struct HelloWorldLabel
 
     void filesDropped(const juce::StringArray& /*files*/, int /*x*/, int /*y*/) override
     {
-        std::cout << "Files Dropped\n";
+        setText("Files Dragged Correctly", juce::dontSendNotification);
     }
 };
 } // namespace GuiApp
