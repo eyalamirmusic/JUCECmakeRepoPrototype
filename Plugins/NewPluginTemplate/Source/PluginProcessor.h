@@ -30,8 +30,9 @@ public:
     const juce::String getProgramName(int) override { return juce::String(); }
     void changeProgramName(int, const juce::String& /*newName*/) override {}
 
-    void getStateInformation(juce::MemoryBlock& /*destData*/) override {}
-    void setStateInformation(const void* /*data*/, int /*sizeInBytes*/) override {}
+    void getStateInformation(juce::MemoryBlock& destData) override;
+
+    void setStateInformation(const void* data, int sizeInBytes) override;
 
 private:
     Parameters parameters;
