@@ -1,7 +1,15 @@
 cmake_minimum_required(VERSION 3.16)
 project(JUCECMakeRepo)
 
+#Compile commands, useful for some IDEs like VS-Code
 set(CMAKE_EXPORT_COMPILE_COMMANDS TRUE)
+
+#Minimum MacOS target
+set(CMAKE_OSX_DEPLOYMENT_TARGET "10.9" CACHE STRING "Minimum OS X deployment version" FORCE)
+
+#static linking in Windows:
+set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+
 
 #adding my own custom git functions, to save some boilerplate:
 include (CMake/GitFunctions.cmake)
@@ -21,6 +29,7 @@ option(JUCE_BUILD_EXAMPLES "Build JUCE Examples" OFF)
 #adding juce as a subdirectory:
 add_subdirectory(${juce_SOURCE_DIR})
 
+#By default, we are building
 option(BUILD_JUCE_PROTOTYPE_EXAMPES "Build JUCE prototype examples" ON)
 
 if (${BUILD_JUCE_PROTOTYPE_EXAMPES})

@@ -17,12 +17,6 @@ macro (update_from_git name repo branch)
     endif ()
 endmacro()
 
-#Minimum MacOS target
-set(CMAKE_OSX_DEPLOYMENT_TARGET "10.9" CACHE STRING "Minimum OS X deployment version" FORCE)
-
-#static linking in Windows:
-set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
-
 
 
 
