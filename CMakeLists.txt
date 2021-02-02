@@ -25,7 +25,7 @@ option(JUCE_BUILD_EXAMPLES "Build JUCE Examples" OFF)
 
 #Fetching JUCE from git
 #IF you want to instead point it to a local version, you can invoke CMake with
-#-DJUCE_SOURCE="Path_To_JUCE"
+#-DCPM_JUCE_SOURCE="Path_To_JUCE"
 CPMAddPackage(
         NAME JUCE
         GITHUB_REPOSITORY juce-framework/JUCE
