@@ -7,7 +7,7 @@ juce_add_plugin("${BaseTargetName}"
         # ICON_BIG ...                              # ICON_* arguments specify a path to an image file to use as an icon for the Standalone
         # ICON_SMALL ...
         COMPANY_NAME "MyCompany"
-        IS_SYNTH FALSE
+        IS_SYNTH TRUE
         NEEDS_MIDI_INPUT TRUE
         NEEDS_MIDI_OUTPUT TRUE
         IS_MIDI_EFFECT TRUE
