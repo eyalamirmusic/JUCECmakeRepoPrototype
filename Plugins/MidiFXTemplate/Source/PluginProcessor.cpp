@@ -4,6 +4,8 @@ void MidiFXProcessor::processBlock(juce::AudioBuffer<float>& /*buffer*/,
                                    juce::MidiBuffer& midiMessages)
 
 {
+    tempBuffer.clear();
+
     for (auto m: midiMessages)
     {
         auto message = m.getMessage();
