@@ -35,5 +35,7 @@ public:
     void setStateInformation(const void* data, int sizeInBytes) override;
 
 private:
+    static BusesProperties getBuses();
+
     Parameters parameters;
 };

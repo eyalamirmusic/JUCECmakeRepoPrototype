@@ -13,6 +13,7 @@ juce::String getParamID(juce::AudioProcessorParameter* param)
 }
 
 NewPluginTemplateAudioProcessor::NewPluginTemplateAudioProcessor()
+    : juce::AudioProcessor(getBuses())
 {
     parameters.add(*this);
 }
@@ -39,21 +40,20 @@ void NewPluginTemplateAudioProcessor::getStateInformation(juce::MemoryBlock& des
 {
     //Serializes your parameters, and any other potential data into an XML:
 
-    juce::ValueTree params ("Params");
+    juce::ValueTree params("Params");
 
     for (auto& param: getParameters())
     {
-        juce::ValueTree paramTree (getParamID(param));
+        juce::ValueTree paramTree(getParamID(param));
         paramTree.setProperty("Value", param->getValue(), nullptr);
         params.appendChild(paramTree, nullptr);
     }
 
-    juce::ValueTree pluginPreset ("MyPlugin");
+    juce::ValueTree pluginPreset("MyPlugin");
     pluginPreset.appendChild(params, nullptr);
     //This a good place to add any non-parameters to your preset
 
     copyXmlToBinary(*pluginPreset.createXml(), destData);
-
 }
 
 void NewPluginTemplateAudioProcessor::setStateInformation(const void* data,
@@ -78,6 +78,15 @@ void NewPluginTemplateAudioProcessor::setStateInformation(const void* data,
 
         //Load your non-parameter data now
     }
+}
+
+juce::AudioProcessor::BusesProperties NewPluginTemplateAudioProcessor::getBuses()
+{
+    const auto stereo = juce::AudioChannelSet::stereo();
+
+    return BusesProperties()
+        .withInput("Input", stereo, true)
+        .withOutput("Output", stereo, true);
 }
 
 juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()
