@@ -1,5 +1,3 @@
-#include "AudioProcessorBase.h"
-
 //==============================================================================
 AudioProcessorBase::AudioProcessorBase(const BusesProperties& ioLayouts)
     : AudioProcessor(ioLayouts)
@@ -119,4 +117,13 @@ bool AudioProcessorBase::isBusesLayoutSupported(
 #endif
 
     return true;
+}
+void AudioProcessorBase::getStateInformation(juce::MemoryBlock& destData)
+{
+    juce::ignoreUnused(destData);
+}
+
+void AudioProcessorBase::setStateInformation(const void* data, int sizeInBytes)
+{
+    juce::ignoreUnused(data, sizeInBytes);
 }

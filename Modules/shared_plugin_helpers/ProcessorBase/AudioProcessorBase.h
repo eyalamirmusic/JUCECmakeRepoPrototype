@@ -1,7 +1,5 @@
 #pragma once
 
-#include <juce_audio_processors/juce_audio_processors.h>
-
 //A helper base class, reducing a lot of the AudioProcessor boiler plate:
 
 class AudioProcessorBase : public juce::AudioProcessor
@@ -16,6 +14,9 @@ public:
     bool isBusesLayoutSupported(const BusesLayout& layouts) const override;
 
     using AudioProcessor::processBlock;
+
+    void getStateInformation(juce::MemoryBlock& destData) override;
+    void setStateInformation(const void* data, int sizeInBytes) override;
 
     //==============================================================================
     juce::AudioProcessorEditor* createEditor() override;

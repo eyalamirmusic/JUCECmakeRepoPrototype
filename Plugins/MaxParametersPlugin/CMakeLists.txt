@@ -1,6 +1,6 @@
-project(MinimalPluginTemplate VERSION 0.0.1)
+project(MaxParametersNumber VERSION 0.0.1)
 
-set (BaseTargetName MinimalPluginTemplate)
+set (BaseTargetName MaxParametersNumber)
 
 juce_add_plugin("${BaseTargetName}"
         # VERSION ...                               # Set this if the plugin version is different to the project version
@@ -14,9 +14,9 @@ juce_add_plugin("${BaseTargetName}"
         EDITOR_WANTS_KEYBOARD_FOCUS FALSE
         COPY_PLUGIN_AFTER_BUILD TRUE
         PLUGIN_MANUFACTURER_CODE Juce
-        PLUGIN_CODE MIpl
+        PLUGIN_CODE MPpl
         FORMATS AU VST3 Standalone
-        PRODUCT_NAME "Minimal Plugin Template")
+        PRODUCT_NAME "Max Parameters Plugin")
 
 target_sources(${BaseTargetName} PRIVATE
         Source/PluginProcessor.cpp)

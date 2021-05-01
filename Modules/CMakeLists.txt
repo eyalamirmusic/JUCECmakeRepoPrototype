@@ -1,2 +1,5 @@
-juce_add_modules(custom_module_test)
-juce_add_modules(shared_processing_code)
+juce_add_modules(
+        custom_module_test
+        shared_processing_code
+        shared_plugin_helpers)
+
