@@ -1,7 +1,6 @@
 #pragma once
 
 #include "PropertiesFileOptions.h"
-#include <juce_audio_plugin_client/utility/juce_PluginHostType.h>
 #include <juce_audio_plugin_client/Standalone/juce_StandaloneFilterWindow.h>
 
 extern JUCEApplicationBase* juce_CreateApplication();
