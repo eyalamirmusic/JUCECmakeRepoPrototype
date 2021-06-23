@@ -37,7 +37,7 @@ CPMAddPackage(
         GITHUB_REPOSITORY juce-framework/JUCE
         GIT_TAG origin/develop)
 
-#By default, we are building
+#By default, we are building the provided plugin/app examples:
 option(BUILD_JUCE_PROTOTYPE_EXAMPES "Build JUCE prototype examples" ON)
 
 if (${BUILD_JUCE_PROTOTYPE_EXAMPES})
