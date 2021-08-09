@@ -8,10 +8,9 @@ class Oscillator
 public:
     Oscillator();
     void process(juce::AudioBuffer<float>& buffer) noexcept;
-
-private:
     float getNextSample();
 
+private:
     int samplePos = 0;
 
     juce::Random rand;
