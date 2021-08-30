@@ -16,11 +16,14 @@ To build, all you have to do is load this project in your favorite IDE
 (CLion/Visual Studio/VSCode/etc) 
 and click 'build' for one of the targets (templates, JUCE examples, Projucer, etc).
 
-You can also generate a project for an IDE by using:
-```cmake
+You can also generate a project for an IDE by using (Mac):
+```
 cmake -G Xcode -B build
 ```
-
+Windows:
+```
+cmake -G "Visual Studio 16 2019" -B build
+```
 For package management, I'm using the amazing CPM.cmake:
 #https://github.com/TheLartians/CPM.cmake
 It automatically fetches JUCE from git, but you can also set the variable:
