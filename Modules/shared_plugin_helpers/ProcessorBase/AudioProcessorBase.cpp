@@ -1,10 +1,15 @@
-//==============================================================================
+#include "AudioProcessorBase.h"
+
+AudioProcessorBase::AudioProcessorBase()
+    : juce::AudioProcessor(getDefaultProperties())
+{
+}
+
 AudioProcessorBase::AudioProcessorBase(const BusesProperties& ioLayouts)
     : AudioProcessor(ioLayouts)
 {
 }
 
-//==============================================================================
 const juce::String AudioProcessorBase::getName() const
 {
     return JucePlugin_Name;

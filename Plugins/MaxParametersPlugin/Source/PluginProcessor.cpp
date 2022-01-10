@@ -4,7 +4,6 @@ constexpr int numParams = 10000;
 constexpr bool useEditor = false;
 
 MaxParamsProcessor::MaxParamsProcessor()
-    : AudioProcessorBase(getDefaultProperties())
 {
     for (int index = 0; index < numParams; ++index)
     {

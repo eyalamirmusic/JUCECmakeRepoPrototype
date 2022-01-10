@@ -1,3 +1,5 @@
+#include "WhiteNoise.h"
+
 namespace WhiteNoise
 {
 constexpr float gain = 0.5f;

@@ -1,3 +1,5 @@
+#include "DummyLabel.h"
+
 namespace CustomModule
 {
 DummyLabel::DummyLabel()
