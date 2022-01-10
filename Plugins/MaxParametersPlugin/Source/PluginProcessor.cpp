@@ -21,7 +21,7 @@ void MaxParamsProcessor::processBlock(juce::AudioBuffer<float>& buffer,
 juce::AudioProcessorEditor* MaxParamsProcessor::createEditor()
 {
     if (useEditor)
-        return AudioProcessorBase::createEditor();
+        return PluginHelpers::ProcessorBase::createEditor();
     else
        return nullptr;
 }

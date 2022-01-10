@@ -1,14 +1,15 @@
 #pragma once
 
-#include <juce_audio_processors/juce_audio_processors.h>
+#include <juce_audio_utils/juce_audio_utils.h>
 
+namespace PluginHelpers
+{
 //A helper base class, reducing a lot of the AudioProcessor boiler plate:
 
-class AudioProcessorBase : public juce::AudioProcessor
+struct ProcessorBase : juce::AudioProcessor
 {
-public:
-    AudioProcessorBase();
-    explicit AudioProcessorBase(const BusesProperties& ioLayouts);
+    ProcessorBase();
+    explicit ProcessorBase(const BusesProperties& ioLayouts);
 
     void prepareToPlay(double sampleRate, int samplesPerBlock) override;
     void releaseResources() override;
@@ -37,8 +38,6 @@ public:
     void changeProgramName(int index, const juce::String& newName) override;
 
     static BusesProperties getDefaultProperties();
-
-private:
-    //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(AudioProcessorBase)
 };
+}
+

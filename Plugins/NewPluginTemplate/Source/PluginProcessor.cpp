@@ -3,25 +3,17 @@
 
 constexpr bool shouldUseGenericEditor = true;
 
-//A little helper to get the parameter ID
-juce::String getParamID(juce::AudioProcessorParameter* param)
-{
-    if (auto paramWithID = dynamic_cast<juce::AudioProcessorParameterWithID*>(param))
-        return paramWithID->paramID;
-
-    return param->getName(50);
-}
-
 NewPluginTemplateAudioProcessor::NewPluginTemplateAudioProcessor()
-    : juce::AudioProcessor(getBuses())
 {
     parameters.add(*this);
 }
 
 void NewPluginTemplateAudioProcessor::processBlock(juce::AudioBuffer<float>& buffer,
-                                                   juce::MidiBuffer& /*midiMessages*/)
+                                                   juce::MidiBuffer& midiMessages)
 
 {
+    juce::ignoreUnused(midiMessages);
+
     if (parameters.enable->get())
         buffer.applyGain(parameters.gain->get());
     else
@@ -44,7 +36,7 @@ void NewPluginTemplateAudioProcessor::getStateInformation(juce::MemoryBlock& des
 
     for (auto& param: getParameters())
     {
-        juce::ValueTree paramTree(getParamID(param));
+        juce::ValueTree paramTree(PluginHelpers::getParamID(param));
         paramTree.setProperty("Value", param->getValue(), nullptr);
         params.appendChild(paramTree, nullptr);
     }
@@ -70,7 +62,7 @@ void NewPluginTemplateAudioProcessor::setStateInformation(const void* data,
 
         for (auto& param: getParameters())
         {
-            auto paramTree = params.getChildWithName(getParamID(param));
+            auto paramTree = params.getChildWithName(PluginHelpers::getParamID(param));
 
             if (paramTree.isValid())
                 param->setValueNotifyingHost(paramTree["Value"]);
@@ -78,15 +70,6 @@ void NewPluginTemplateAudioProcessor::setStateInformation(const void* data,
 
         //Load your non-parameter data now
     }
-}
-
-juce::AudioProcessor::BusesProperties NewPluginTemplateAudioProcessor::getBuses()
-{
-    const auto stereo = juce::AudioChannelSet::stereo();
-
-    return BusesProperties()
-        .withInput("Input", stereo, true)
-        .withOutput("Output", stereo, true);
 }
 
 juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()

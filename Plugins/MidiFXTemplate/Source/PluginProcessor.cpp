@@ -30,16 +30,6 @@ juce::AudioProcessorEditor* MidiFXProcessor::createEditor()
     return new juce::GenericAudioProcessorEditor(*this);
 }
 
-void MidiFXProcessor::getStateInformation(juce::MemoryBlock& destData)
-{
-    juce::ignoreUnused(destData);
-}
-
-void MidiFXProcessor::setStateInformation(const void* data, int sizeInBytes)
-{
-    juce::ignoreUnused(data, sizeInBytes);
-}
-
 juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
     return new MidiFXProcessor();

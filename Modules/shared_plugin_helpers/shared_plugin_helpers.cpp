@@ -1,3 +1,3 @@
 #include "shared_plugin_helpers.h"
 
-#include "ProcessorBase/AudioProcessorBase.cpp"
+#include "ProcessorBase/ProcessorBase.cpp"

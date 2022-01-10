@@ -14,7 +14,7 @@ juce_add_plugin("${BaseTargetName}"
         EDITOR_WANTS_KEYBOARD_FOCUS FALSE
         COPY_PLUGIN_AFTER_BUILD TRUE
         PLUGIN_MANUFACTURER_CODE Juce
-        PLUGIN_CODE Dem0
+        PLUGIN_CODE NPtm
         FORMATS AU VST3 Standalone
         PRODUCT_NAME "Audio Plugin Example")
 
@@ -29,7 +29,7 @@ target_compile_definitions(${BaseTargetName}
         JUCE_VST3_CAN_REPLACE_VST2=0)
 
 target_link_libraries(${BaseTargetName} PRIVATE
-        juce::juce_audio_utils
-        juce::juce_recommended_config_flags
-        juce::juce_recommended_lto_flags
-        juce::juce_recommended_warning_flags)
+        shared_plugin_helpers
+        juce_recommended_config_flags
+        juce_recommended_lto_flags
+        juce_recommended_warning_flags)

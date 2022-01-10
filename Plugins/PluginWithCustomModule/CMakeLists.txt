@@ -14,9 +14,9 @@ juce_add_plugin("${BaseTargetName}"
         EDITOR_WANTS_KEYBOARD_FOCUS FALSE
         COPY_PLUGIN_AFTER_BUILD TRUE
         PLUGIN_MANUFACTURER_CODE Juce
-        PLUGIN_CODE Dem0
+        PLUGIN_CODE Plcm
         FORMATS AU VST3 Standalone
-        PRODUCT_NAME "Audio Plugin Example")
+        PRODUCT_NAME "Plugin With Custom Module")
 
 target_sources(${BaseTargetName} PRIVATE
         Source/PluginProcessor.cpp
@@ -32,4 +32,5 @@ target_link_libraries(${BaseTargetName} PRIVATE
         juce::juce_recommended_config_flags
         juce::juce_recommended_lto_flags
         juce::juce_recommended_warning_flags
-        shared_processing_code)
+        shared_processing_code
+        shared_plugin_helpers)

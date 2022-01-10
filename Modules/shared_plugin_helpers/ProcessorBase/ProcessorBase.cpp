@@ -1,21 +1,23 @@
-#include "AudioProcessorBase.h"
+#include "ProcessorBase.h"
 
-AudioProcessorBase::AudioProcessorBase()
+namespace PluginHelpers
+{
+ProcessorBase::ProcessorBase()
     : juce::AudioProcessor(getDefaultProperties())
 {
 }
 
-AudioProcessorBase::AudioProcessorBase(const BusesProperties& ioLayouts)
+ProcessorBase::ProcessorBase(const BusesProperties& ioLayouts)
     : AudioProcessor(ioLayouts)
 {
 }
 
-const juce::String AudioProcessorBase::getName() const
+const juce::String ProcessorBase::getName() const
 {
     return JucePlugin_Name;
 }
 
-bool AudioProcessorBase::acceptsMidi() const
+bool ProcessorBase::acceptsMidi() const
 {
 #if JucePlugin_WantsMidiInput
     return true;
@@ -24,7 +26,7 @@ bool AudioProcessorBase::acceptsMidi() const
 #endif
 }
 
-bool AudioProcessorBase::producesMidi() const
+bool ProcessorBase::producesMidi() const
 {
 #if JucePlugin_ProducesMidiOutput
     return true;
@@ -33,7 +35,7 @@ bool AudioProcessorBase::producesMidi() const
 #endif
 }
 
-bool AudioProcessorBase::isMidiEffect() const
+bool ProcessorBase::isMidiEffect() const
 {
 #if JucePlugin_IsMidiEffect
     return true;
@@ -42,51 +44,51 @@ bool AudioProcessorBase::isMidiEffect() const
 #endif
 }
 
-double AudioProcessorBase::getTailLengthSeconds() const
+double ProcessorBase::getTailLengthSeconds() const
 {
     return 0.0;
 }
 
-int AudioProcessorBase::getNumPrograms()
+int ProcessorBase::getNumPrograms()
 {
     return 1; // NB: some hosts don't cope very well if you tell them there are 0 programs,
     // so this should be at least 1, even if you're not really implementing programs.
 }
 
-int AudioProcessorBase::getCurrentProgram()
+int ProcessorBase::getCurrentProgram()
 {
     return 0;
 }
 
-void AudioProcessorBase::setCurrentProgram(int index)
+void ProcessorBase::setCurrentProgram(int index)
 {
     juce::ignoreUnused(index);
 }
 
-const juce::String AudioProcessorBase::getProgramName(int index)
+const juce::String ProcessorBase::getProgramName(int index)
 {
     juce::ignoreUnused(index);
     return {};
 }
 
-void AudioProcessorBase::changeProgramName(int index, const juce::String& newName)
+void ProcessorBase::changeProgramName(int index, const juce::String& newName)
 {
     juce::ignoreUnused(index, newName);
 }
 
 //==============================================================================
-void AudioProcessorBase::prepareToPlay(double sampleRate, int samplesPerBlock)
+void ProcessorBase::prepareToPlay(double sampleRate, int samplesPerBlock)
 {
     // Use this method as the place to do any pre-playback
     // initialisation that you need..
     juce::ignoreUnused(sampleRate, samplesPerBlock);
 }
 
-void AudioProcessorBase::releaseResources()
+void ProcessorBase::releaseResources()
 {
 }
 
-juce::AudioProcessor::BusesProperties AudioProcessorBase::getDefaultProperties()
+juce::AudioProcessor::BusesProperties ProcessorBase::getDefaultProperties()
 {
     return BusesProperties()
 #if !JucePlugin_IsMidiEffect
@@ -98,12 +100,12 @@ juce::AudioProcessor::BusesProperties AudioProcessorBase::getDefaultProperties()
         ;
 }
 
-juce::AudioProcessorEditor* AudioProcessorBase::createEditor()
+juce::AudioProcessorEditor* ProcessorBase::createEditor()
 {
     return new juce::GenericAudioProcessorEditor(*this);
 }
 
-bool AudioProcessorBase::isBusesLayoutSupported(
+bool ProcessorBase::isBusesLayoutSupported(
     const juce::AudioProcessor::BusesLayout& layouts) const
 {
     if (isMidiEffect())
@@ -123,12 +125,14 @@ bool AudioProcessorBase::isBusesLayoutSupported(
 
     return true;
 }
-void AudioProcessorBase::getStateInformation(juce::MemoryBlock& destData)
+void ProcessorBase::getStateInformation(juce::MemoryBlock& destData)
 {
     juce::ignoreUnused(destData);
 }
 
-void AudioProcessorBase::setStateInformation(const void* data, int sizeInBytes)
+void ProcessorBase::setStateInformation(const void* data, int sizeInBytes)
 {
     juce::ignoreUnused(data, sizeInBytes);
 }
+
+} // namespace PluginHelpers

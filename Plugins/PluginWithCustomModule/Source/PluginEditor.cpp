@@ -11,7 +11,3 @@ void PluginWithCustomModuleEditor::paint(juce::Graphics& g)
 {
     g.fillAll(getLookAndFeel().findColour(juce::ResizableWindow::backgroundColourId));
 }
-
-void PluginWithCustomModuleEditor::resized()
-{
-}

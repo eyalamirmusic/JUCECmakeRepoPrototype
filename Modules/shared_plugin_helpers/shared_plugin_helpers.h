@@ -10,12 +10,11 @@ BEGIN_JUCE_MODULE_DECLARATION
       name:             shared_plugin_helpers
       description:      Shared plugin helpers
       license:          GPL/Commercial
-      dependencies:     juce_audio_processors
+      dependencies:     juce_audio_utils
 
      END_JUCE_MODULE_DECLARATION
 
 #endif
 
-#include <juce_audio_processors/juce_audio_processors.h>
-
-#include "ProcessorBase/AudioProcessorBase.h"
+#include "ProcessorBase/Helpers.h"
+#include "ProcessorBase/ProcessorBase.h"

@@ -2,10 +2,10 @@
 
 #include <shared_plugin_helpers/shared_plugin_helpers.h>
 
-//Inhereting from AudioProcessorBase, which is just inhereting from juce::AudioProcessor
+//Inhereting from PluginHelpers::ProcessorBase, which is just inhereting from juce::AudioProcessor
 //And adding some default implementations
 
-class MaxParamsProcessor : public AudioProcessorBase
+class MaxParamsProcessor : public PluginHelpers::ProcessorBase
 {
 public:
     MaxParamsProcessor();
