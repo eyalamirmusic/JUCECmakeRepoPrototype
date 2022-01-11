@@ -35,9 +35,9 @@ option(JUCE_BUILD_EXAMPLES "Build JUCE Examples" OFF)
 CPMAddPackage("gh:juce-framework/JUCE#develop")
 
 #By default, we are building the provided plugin/app examples:
-option(BUILD_JUCE_PROTOTYPE_EXAMPES "Build JUCE prototype examples" ON)
+option(BUILD_JUCE_PROTOTYPE_EXAMPLES "Build JUCE prototype examples" ON)
 
-if (${BUILD_JUCE_PROTOTYPE_EXAMPES})
+if (${BUILD_JUCE_PROTOTYPE_EXAMPLES})
     #adding any custom modules you might have:
     add_subdirectory(Modules)
 
