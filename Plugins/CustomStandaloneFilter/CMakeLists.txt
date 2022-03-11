@@ -30,9 +30,9 @@ target_compile_definitions(${BaseTargetName}
         JUCE_VST3_CAN_REPLACE_VST2=0
         JUCE_USE_CUSTOM_PLUGIN_STANDALONE_APP=1)
 
-target_link_libraries(${BaseTargetName} PRIVATE
+target_link_libraries(${BaseTargetName} PUBLIC
         shared_plugin_helpers
-        juce_audio_plugin_client
+        PRIVATE
         juce::juce_recommended_config_flags
         juce::juce_recommended_lto_flags
         juce::juce_recommended_warning_flags)

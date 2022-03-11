@@ -9,7 +9,16 @@ include(CMake/CPM.cmake)
 set(CMAKE_EXPORT_COMPILE_COMMANDS TRUE)
 
 #Minimum MacOS target, set globally
-set(CMAKE_OSX_DEPLOYMENT_TARGET "10.9" CACHE STRING "Minimum OS X deployment version" FORCE)
+
+if (${CMAKE_SYSTEM_NAME} STREQUAL "iOS")
+    set(CMAKE_OSX_DEPLOYMENT_TARGET 11.0 CACHE STRING "Minimum OS X deployment version" FORCE)
+
+    #code signing to run on an iOS device:
+#    set(CMAKE_XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY "iPhone Developer" CACHE STRING "" FORCE)
+#    set(CMAKE_XCODE_ATTRIBUTE_DEVELOPMENT_TEAM "XXXXXXXXXX" CACHE STRING "" FORCE)
+else()
+    set(CMAKE_OSX_DEPLOYMENT_TARGET "10.9" CACHE STRING "Minimum OS X deployment version" FORCE)
+endif()
 
 option(UniversalBinary "Build universal binary for mac" OFF)
 
