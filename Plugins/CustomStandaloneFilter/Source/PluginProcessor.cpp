@@ -1,29 +1,20 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 
-CustomStandaloneProcessor::CustomStandaloneProcessor()
-{
-}
-
-void CustomStandaloneProcessor::prepareToPlay(double /*sampleRate*/, int /*blockSize*/)
-{
-
-}
-
-void CustomStandaloneProcessor::processBlock(AudioBuffer<float>& buffer,
-                                                   MidiBuffer& midiMessages)
+void CustomStandaloneProcessor::processBlock(juce::AudioBuffer<float>& buffer,
+                                             juce::MidiBuffer& midiMessages)
 
 {
     midiMessages.clear();
     buffer.clear();
 }
 
-AudioProcessorEditor* CustomStandaloneProcessor::createEditor()
+juce::AudioProcessorEditor* CustomStandaloneProcessor::createEditor()
 {
     return new CustomStandaloneEditor(*this);
 }
 
-AudioProcessor* JUCE_CALLTYPE createPluginFilter()
+juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
     return new CustomStandaloneProcessor();
 }

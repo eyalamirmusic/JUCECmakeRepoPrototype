@@ -18,8 +18,6 @@ juce_add_plugin("${BaseTargetName}"
         FORMATS AU VST3 Standalone
         PRODUCT_NAME "Custom Standalone Filter")
 
-juce_generate_juce_header(${BaseTargetName})
-
 target_sources(${BaseTargetName} PRIVATE
         Source/PluginProcessor.cpp
         Source/PluginEditor.cpp
@@ -33,7 +31,8 @@ target_compile_definitions(${BaseTargetName}
         JUCE_USE_CUSTOM_PLUGIN_STANDALONE_APP=1)
 
 target_link_libraries(${BaseTargetName} PRIVATE
-        juce::juce_audio_utils
+        shared_plugin_helpers
+        juce_audio_plugin_client
         juce::juce_recommended_config_flags
         juce::juce_recommended_lto_flags
         juce::juce_recommended_warning_flags)

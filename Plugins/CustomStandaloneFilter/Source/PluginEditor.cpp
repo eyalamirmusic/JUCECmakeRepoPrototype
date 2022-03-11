@@ -7,9 +7,9 @@ CustomStandaloneEditor::CustomStandaloneEditor(CustomStandaloneProcessor& p)
     setSize(400, 300);
 }
 
-void CustomStandaloneEditor::paint(Graphics& g)
+void CustomStandaloneEditor::paint(juce::Graphics& g)
 {
-    g.fillAll(getLookAndFeel().findColour(ResizableWindow::backgroundColourId));
+    g.fillAll(getLookAndFeel().findColour(juce::ResizableWindow::backgroundColourId));
 }
 
 void CustomStandaloneEditor::resized()

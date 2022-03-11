@@ -1,15 +1,14 @@
 #pragma once
 
-#include <JuceHeader.h>
+#include <shared_plugin_helpers/shared_plugin_helpers.h>
 
 class CustomStandaloneProcessor;
 
-class CustomStandaloneEditor  : public AudioProcessorEditor
+class CustomStandaloneEditor : public juce::AudioProcessorEditor
 {
 public:
-    explicit CustomStandaloneEditor (CustomStandaloneProcessor&);
+    explicit CustomStandaloneEditor(CustomStandaloneProcessor&);
 
-    void paint (Graphics&) override;
+    void paint(juce::Graphics&) override;
     void resized() override;
-
 };

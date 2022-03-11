@@ -1,23 +1,23 @@
 #pragma once
 
-#include <JuceHeader.h>
+#include <juce_audio_plugin_client/Standalone/juce_StandaloneFilterWindow.h>
 
 namespace Helpers
 {
-inline Colour getBackgroundColor()
+inline juce::Colour getBackgroundColor()
 {
-    auto colorID = ResizableWindow::backgroundColourId;
+    auto colorID = juce::ResizableWindow::backgroundColourId;
 
-    return LookAndFeel::getDefaultLookAndFeel().findColour(colorID);
+    return juce::LookAndFeel::getDefaultLookAndFeel().findColour(colorID);
 }
 
-inline Array<StandalonePluginHolder::PluginInOuts> getChannelConfigurations()
+inline juce::Array<juce::StandalonePluginHolder::PluginInOuts> getChannelConfigurations()
 {
 #ifdef JucePlugin_PreferredChannelConfigurations
-    StandalonePluginHolder::PluginInOuts channels[] = {
+    juce::StandalonePluginHolder::PluginInOuts channels[] = {
         JucePlugin_PreferredChannelConfigurations};
 
-    return juce::Array<StandalonePluginHolder::PluginInOuts>(
+    return juce::Array<juce::StandalonePluginHolder::PluginInOuts>(
         channels, juce::numElementsInArray(channels));
 #else
     return {};

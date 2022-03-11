@@ -3,25 +3,25 @@
 
 StandaloneFilterApp::StandaloneFilterApp()
 {
-    PluginHostType::jucePlugInClientCurrentWrapperType =
-        AudioProcessor::wrapperType_Standalone;
+    juce::PluginHostType::jucePlugInClientCurrentWrapperType =
+        juce::AudioProcessor::wrapperType_Standalone;
 
     appProperties.setStorageParameters(PropertiesFileOptions());
 }
 
-StandaloneFilterWindow* StandaloneFilterApp::createWindow()
+juce::StandaloneFilterWindow* StandaloneFilterApp::createWindow()
 {
-    return new StandaloneFilterWindow(getApplicationName(),
-                                      Helpers::getBackgroundColor(),
-                                      appProperties.getUserSettings(),
-                                      false,
-                                      {},
-                                      nullptr,
-                                      Helpers::getChannelConfigurations(),
-                                      Helpers::shouldAutoOpenMidiDevices());
+    return new juce::StandaloneFilterWindow(getApplicationName(),
+                                            Helpers::getBackgroundColor(),
+                                            appProperties.getUserSettings(),
+                                            false,
+                                            {},
+                                            nullptr,
+                                            Helpers::getChannelConfigurations(),
+                                            Helpers::shouldAutoOpenMidiDevices());
 }
 
-void StandaloneFilterApp::initialise(const String&)
+void StandaloneFilterApp::initialise(const juce::String&)
 {
     mainWindow.reset(createWindow());
 
@@ -40,8 +40,8 @@ void StandaloneFilterApp::systemRequestedQuit()
     if (mainWindow != nullptr)
         mainWindow->pluginHolder->savePluginState();
 
-    if (ModalComponentManager::getInstance()->cancelAllModalComponents())
-        Timer::callAfterDelay(100, [&]() { requestQuit(); });
+    if (juce::ModalComponentManager::getInstance()->cancelAllModalComponents())
+        juce::Timer::callAfterDelay(100, [&]() { requestQuit(); });
     else
         quit();
 }
@@ -52,8 +52,7 @@ void StandaloneFilterApp::requestQuit() const
         app->systemRequestedQuit();
 }
 
-
-JUCEApplicationBase* juce_CreateApplication()
+juce::JUCEApplicationBase* juce_CreateApplication()
 {
     return new StandaloneFilterApp();
 }

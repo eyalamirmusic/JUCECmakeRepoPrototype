@@ -1,8 +1,8 @@
 #pragma once
 
-#include <JuceHeader.h>
+#include <juce_data_structures/juce_data_structures.h>
 
-struct PropertiesFileOptions : public PropertiesFile::Options
+struct PropertiesFileOptions : public juce::PropertiesFile::Options
 {
     PropertiesFileOptions()
     {
@@ -12,7 +12,7 @@ struct PropertiesFileOptions : public PropertiesFile::Options
         folderName = getOptionsFolderName();
     }
 
-    static String getOptionsFolderName()
+    static juce::String getOptionsFolderName()
     {
 #if JUCE_LINUX
         return "~/.config";
