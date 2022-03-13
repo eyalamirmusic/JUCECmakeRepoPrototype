@@ -1,6 +1,10 @@
 #include "StandaloneFilter.h"
 #include "ConfigurationHelpers.h"
 
+#if JUCE_IOS
+void* juce_GetIOSCustomDelegateClass()  { return nullptr; }
+#endif
+
 StandaloneFilterApp::StandaloneFilterApp()
 {
     juce::PluginHostType::jucePlugInClientCurrentWrapperType =
