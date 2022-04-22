@@ -104,15 +104,29 @@ struct PaintJobInfo
 //And paints the last 'job' sent to it.
 //The thread will only look at the very latest job so it's finen to pass jobs to it
 //At a higher or lower rate
-struct PaintThread : HighResolutionTimer
+struct PaintThread
 {
     PaintThread(Component& parentToUse)
         : parent(parentToUse)
     {
-        startTimer(10);
+        thread = std::make_unique<std::thread>(
+            [&]
+            {
+                while (running.load())
+                {
+                    hiResTimerCallback();
+                    Thread::sleep(10);
+                }
+            });
     }
 
-    void hiResTimerCallback() override
+    ~PaintThread()
+    {
+        running.store(false);
+        thread->join();
+    }
+
+    void hiResTimerCallback()
     {
         PaintJobInfo jobToDo;
 
@@ -153,6 +167,8 @@ struct PaintThread : HighResolutionTimer
     Rectangle<float> bounds;
     CriticalSection lock;
     PaintJobInfo nextJob;
+    std::unique_ptr<std::thread> thread;
+    std::atomic<bool> running {true};
 };
 
 struct ComplicatedPath
