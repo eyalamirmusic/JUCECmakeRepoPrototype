@@ -8,7 +8,7 @@ MaxParamsProcessor::MaxParamsProcessor()
     for (int index = 0; index < numParams; ++index)
     {
         auto name = juce::String(index);
-        addParameter(new juce::AudioParameterBool(name, name, false));
+        addParameter(new juce::AudioParameterBool({name, 1}, name, false));
     }
 }
 

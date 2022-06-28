@@ -1,8 +1,6 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 
-constexpr bool shouldUseGenericEditor = true;
-
 NewPluginTemplateAudioProcessor::NewPluginTemplateAudioProcessor()
 {
     parameters.add(*this);
@@ -22,10 +20,7 @@ void NewPluginTemplateAudioProcessor::processBlock(juce::AudioBuffer<float>& buf
 
 juce::AudioProcessorEditor* NewPluginTemplateAudioProcessor::createEditor()
 {
-    if (shouldUseGenericEditor)
-        return new juce::GenericAudioProcessorEditor(*this);
-    else
-        return new NewPluginTemplateAudioProcessorEditor(*this);
+    return new NewPluginTemplateAudioProcessorEditor(*this);
 }
 
 void NewPluginTemplateAudioProcessor::getStateInformation(juce::MemoryBlock& destData)
