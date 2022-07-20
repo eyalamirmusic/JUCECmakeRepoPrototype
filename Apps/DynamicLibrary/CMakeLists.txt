@@ -5,7 +5,7 @@ add_library(DLL SHARED Source/DLL.cpp)
 target_compile_definitions(DLL PRIVATE JUCE_STANDALONE_APPLICATION=1)
 _juce_initialise_target(DLL)
 
-#hiding all symbos, except the C interface:
+#hiding all symbols, except the C interface:
 set_property(TARGET DLL PROPERTY C_VISIBILITY_PRESET hidden)
 set_property(TARGET DLL PROPERTY VISIBILITY_INLINES_HIDDEN ON)
 
