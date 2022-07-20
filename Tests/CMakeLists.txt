@@ -3,8 +3,9 @@ project(UnitTestRunner VERSION 0.1)
 set_property(GLOBAL PROPERTY CTEST_TARGETS_ADDED 1)
 include(CTest)
 
-CPMAddPackage("gh:catchorg/Catch2#devel")
-include(${Catch2_SOURCE_DIR}/extras/Catch.cmake)
+#Declaring that we want 'catch2', a testing framework.
+#Instructions on how to find it would appear under CMake/findcatch2.cmake
+find_package(catch2 REQUIRED)
 
 juce_add_console_app(UnitTestRunner PRODUCT_NAME "Unit Test Runner")
 

@@ -1,9 +1,8 @@
 cmake_minimum_required(VERSION 3.16)
 project(JUCECMakeRepo)
 
-#including CPM.cmake, a package manager:
-#https://github.com/TheLartians/CPM.cmake
-include(CMake/CPM.cmake)
+#First, we'll add the CMake folder, incase we'll need to find_package later:
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 #Compile commands, useful for some IDEs like VS-Code
 set(CMAKE_EXPORT_COMPILE_COMMANDS TRUE)
@@ -29,19 +28,9 @@ endif()
 #static linking in Windows
 set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 
-#Adds all the module sources so they appear correctly in the IDE
-set_property(GLOBAL PROPERTY USE_FOLDERS YES)
-option(JUCE_ENABLE_MODULE_SOURCE_GROUPS "Enable Module Source Groups" ON)
-
-#set any of these to "ON" if you want to build one of the juce examples
-#or extras (Projucer/AudioPluginHost, etc):
-option(JUCE_BUILD_EXTRAS "Build JUCE Extras" OFF)
-option(JUCE_BUILD_EXAMPLES "Build JUCE Examples" OFF)
-
-#Fetching JUCE from git
-#IF you want to instead point it to a local version, you can invoke CMake with
-#-DCPM_JUCE_SOURCE="Path_To_JUCE"
-CPMAddPackage("gh:juce-framework/JUCE#master")
+#We 'require' that we need juce. If JUCE isn't found, it will revert to what's in
+#CMake/Findjuce.cmake, where you can see how JUCE is brought in/configured
+find_package(juce REQUIRED)
 
 #By default, we are building the provided plugin/app examples:
 option(BUILD_JUCE_PROTOTYPE_EXAMPLES "Build JUCE prototype examples" ON)
@@ -55,6 +44,7 @@ if (${BUILD_JUCE_PROTOTYPE_EXAMPLES})
     add_subdirectory(Plugins)
 endif()
 
+#optionally, we're also adding the unit tests:
 option(BUILD_UNIT_TESTS "Build JUCE prototype examples" ON)
 
 if (BUILD_UNIT_TESTS)
