@@ -8,6 +8,11 @@
 class DummySynth : public PluginHelpers::ProcessorBase
 {
 public:
+    DummySynth();
+
+private:
     void processBlock(juce::AudioBuffer<float>& buffer,
                       juce::MidiBuffer& midiMessages) override;
+
+    static BusesProperties getBuses();
 };
