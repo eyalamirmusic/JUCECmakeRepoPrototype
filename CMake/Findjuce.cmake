@@ -14,4 +14,4 @@ option(JUCE_BUILD_EXAMPLES "Build JUCE Examples" OFF)
 #Fetching JUCE from git
 #IF you want to instead point it to a local version, you can invoke CMake with
 #-DCPM_JUCE_SOURCE="Path_To_JUCE"
-CPMAddPackage("gh:juce-framework/JUCE#master")
+CPMAddPackage("gh:juce-framework/JUCE#develop")
