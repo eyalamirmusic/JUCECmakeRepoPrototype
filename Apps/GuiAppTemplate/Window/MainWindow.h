@@ -1,6 +1,6 @@
 #pragma once
 
-#include "MainComponent.h"
+#include "../Source/CommonHeader.h"
 
 namespace GuiApp
 {

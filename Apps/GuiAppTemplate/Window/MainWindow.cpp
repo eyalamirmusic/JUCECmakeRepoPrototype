@@ -1,4 +1,5 @@
 #include "MainWindow.h"
+#include "../Source/MainComponent.h"
 
 namespace GuiApp
 {
