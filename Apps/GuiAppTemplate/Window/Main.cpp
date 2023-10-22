@@ -9,9 +9,10 @@ public:
     const String getApplicationVersion() override { return JUCE_APPLICATION_VERSION_STRING; }
     bool moreThanOneInstanceAllowed() override { return true; }
 
-    void initialise(const String& /*commandLine*/) override
+    void initialise(const String& commandLine) override
     {
-        mainWindow = std::make_unique<MainWindow>(getApplicationName());
+        if (!commandLine.contains("console"))
+            mainWindow = std::make_unique<MainWindow>(getApplicationName());
     }
 
     void shutdown() override { mainWindow.reset(); }
