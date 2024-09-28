@@ -54,7 +54,7 @@ if (${BUILD_JUCE_PROTOTYPE_EXAMPLES})
 endif ()
 
 #optionally, we're also adding the unit tests:
-option(BUILD_UNIT_TESTS "Build JUCE prototype examples" ON)
+option(BUILD_UNIT_TESTS "Build JUCE prototype examples" OFF)
 
 if (BUILD_UNIT_TESTS)
     enable_testing()
