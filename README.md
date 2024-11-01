@@ -22,7 +22,7 @@ cmake -G Xcode -B build
 ```
 Windows:
 ```
-cmake -G "Visual Studio 16 2022" -B build
+cmake -G "Visual Studio 17 2022" -B build
 ```
 
 For package management, I'm using the amazing CPM.cmake:
