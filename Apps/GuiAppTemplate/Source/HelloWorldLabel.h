@@ -10,7 +10,7 @@ struct HelloWorldLabel : public juce::Label
     {
         setText("HelloWorld", juce::dontSendNotification);
         setJustificationType(juce::Justification::centred);
-        setFont(juce::Font(20));
+        setFont({juce::FontOptions(20)});
     }
 };
 } // namespace GuiApp
