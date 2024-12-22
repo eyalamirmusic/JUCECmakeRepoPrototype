@@ -24,7 +24,7 @@ private:
     std::unique_ptr<MainWindow> mainWindow;
 };
 
-// This macro generates the main() routine that launches the app.
-START_JUCE_APPLICATION(GuiAppTemplateApplication)
-
 } // namespace GuiApp
+
+// This macro generates the main() routine that launches the app.
+START_JUCE_APPLICATION(GuiApp::GuiAppTemplateApplication)
