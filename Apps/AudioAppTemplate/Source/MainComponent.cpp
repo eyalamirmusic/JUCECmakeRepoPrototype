@@ -9,6 +9,11 @@ MainComponent::MainComponent()
     setSize(600, 400);
 }
 
+MainComponent::~MainComponent()
+{
+    shutdownAudio();
+}
+
 void MainComponent::paint(Graphics& g)
 {
     g.fillAll(getLookAndFeel().findColour(juce::ResizableWindow::backgroundColourId));
