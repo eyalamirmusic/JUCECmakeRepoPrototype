@@ -4,7 +4,7 @@
 
 namespace GuiApp
 {
-struct HelloWorldLabel : public juce::Label
+struct HelloWorldLabel : juce::Label
 {
     HelloWorldLabel()
     {
