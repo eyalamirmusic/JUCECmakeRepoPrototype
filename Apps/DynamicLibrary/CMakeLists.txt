@@ -18,7 +18,7 @@ target_link_libraries(DLL PRIVATE
 
 #Now, the app:
 set (TargetName ${PROJECT_NAME})
-juce_add_gui_app(${TargetName} PRODUCT_NAME ${TargetName})
+juce_add_console_app(${TargetName} PRODUCT_NAME ${TargetName})
 
 target_sources(${TargetName} PRIVATE Source/Main.cpp)
 

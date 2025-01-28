@@ -13,14 +13,11 @@ int main()
 {
     using juce::File;
 
-    auto exeDir = File::getSpecialLocation(File::currentApplicationFile);
-
-
+    auto exeDir = File::getSpecialLocation(File::currentExecutableFile);
     auto dllFile = exeDir.getParentDirectory().getChildFile(getDllName());
+    auto lib = juce::DynamicLibrary(dllFile.getFullPathName());
+    auto func = (void (*)()) lib.getFunction("dllFunction");
 
-    juce::DynamicLibrary lib {dllFile.getFullPathName()};
-
-    auto func = (void(*)())lib.getFunction("dllFunction");
     func();
 
     return 0;
