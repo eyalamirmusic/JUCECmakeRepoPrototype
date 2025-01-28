@@ -8,6 +8,7 @@ class MainComponent : public juce::AudioAppComponent
 {
 public:
     MainComponent();
+    virtual ~MainComponent() override;
 
     void prepareToPlay(int samplesPerBlockExpected, double sampleRate) override;
     void releaseResources() override;
