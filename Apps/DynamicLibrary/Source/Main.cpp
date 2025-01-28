@@ -2,12 +2,10 @@
 
 inline juce::String getDllName()
 {
-#if JUCE_MAC
-    return "libDLL.so";
-#elif JUCE_WINDOWS
+#if JUCE_WINDOWS
     return "dll.dll";
 #else
-    return "dll.so";
+    return "libDLL.so";
 #endif
 }
 
