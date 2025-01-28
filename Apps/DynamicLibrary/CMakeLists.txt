@@ -1,24 +1,24 @@
 project(AppWithDLL VERSION 0.1)
 
 #first, we define the dll:
-add_library(DLL SHARED Source/DLL.cpp)
-target_compile_definitions(DLL PRIVATE JUCE_STANDALONE_APPLICATION=1)
+add_library(DLL MODULE Source/DLL.cpp)
+target_compile_definitions(DLL PRIVATE JUCE_MODAL_LOOPS_PERMITTED=1)
 _juce_initialise_target(DLL)
 
 #hiding all symbols, except the C interface:
-set_property(TARGET DLL PROPERTY C_VISIBILITY_PRESET hidden)
-set_property(TARGET DLL PROPERTY VISIBILITY_INLINES_HIDDEN ON)
+set_target_properties(DLL PROPERTIES
+        VISIBILITY_INLINES_HIDDEN ON
+        C_VISIBILITY_PRESET hidden)
 
 target_link_libraries(DLL PRIVATE
         juce_recommended_config_flags
         juce_recommended_lto_flags
         juce_recommended_warning_flags
-        juce_core
-        juce_gui_extra)
+        juce_gui_basics)
 
 #Now, the app:
 set (TargetName ${PROJECT_NAME})
-juce_add_console_app(${TargetName} PRODUCT_NAME ${TargetName})
+juce_add_gui_app(${TargetName} PRODUCT_NAME ${TargetName})
 
 target_sources(${TargetName} PRIVATE Source/Main.cpp)
 

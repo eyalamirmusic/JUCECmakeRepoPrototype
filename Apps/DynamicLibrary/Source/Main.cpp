@@ -3,7 +3,7 @@
 inline juce::String getDllName()
 {
 #if JUCE_MAC
-    return "libDLL.dylib";
+    return "libDLL.so";
 #elif JUCE_WINDOWS
     return "dll.dll";
 #else
@@ -15,7 +15,8 @@ int main()
 {
     using juce::File;
 
-    auto exeDir = File::getSpecialLocation(File::currentExecutableFile);
+    auto exeDir = File::getSpecialLocation(File::currentApplicationFile);
+
 
     auto dllFile = exeDir.getParentDirectory().getChildFile(getDllName());
 

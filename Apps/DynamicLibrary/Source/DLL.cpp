@@ -1,27 +1,25 @@
-#include <juce_core/juce_core.h>
-#include <juce_gui_extra/juce_gui_extra.h>
+#include <juce_gui_basics/juce_gui_basics.h>
 
 #if JUCE_WINDOWS
-#define DLLEXPORT __declspec (dllexport)
+#define DLLEXPORT __declspec(dllexport)
 #else
 #define DLLEXPORT
 #endif
 
 extern "C" DLLEXPORT void dllFunction();
 
-struct TestTimer: juce::Timer
+struct TestTimer : juce::Timer
 {
-    TestTimer()
-    {
-        startTimer(50);
-    }
+    TestTimer() { startTimer(500); }
 
-    void timerCallback() override{}
+    void timerCallback() override { std::cout << "Logging from the DLL!\n"; }
 };
 
 DLLEXPORT void dllFunction()
 {
-    juce::ScopedJuceInitialiser_GUI s;
-    TestTimer f;
-    juce::Logger::writeToLog("Logging from the DLL!");
+    auto init = juce::ScopedJuceInitialiser_GUI();
+    auto mm = juce::MessageManager::getInstance();
+    auto timer = TestTimer();
+
+    mm->runDispatchLoopUntil(5000);
 }
