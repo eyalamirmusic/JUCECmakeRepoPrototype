@@ -27,16 +27,9 @@ void NewPluginTemplateAudioProcessor::getStateInformation(juce::MemoryBlock& des
 {
     //Serializes your parameters, and any other potential data into an XML:
 
-    juce::ValueTree params("Params");
+    auto params = PluginHelpers::saveParamsTree(*this);
 
-    for (auto& param: getParameters())
-    {
-        juce::ValueTree paramTree(PluginHelpers::getParamID(param));
-        paramTree.setProperty("Value", param->getValue(), nullptr);
-        params.appendChild(paramTree, nullptr);
-    }
-
-    juce::ValueTree pluginPreset("MyPlugin");
+    auto pluginPreset = juce::ValueTree(getName());
     pluginPreset.appendChild(params, nullptr);
     //This a good place to add any non-parameters to your preset
 
@@ -48,20 +41,12 @@ void NewPluginTemplateAudioProcessor::setStateInformation(const void* data,
 {
     //Loads your parameters, and any other potential data from an XML:
 
-    auto xml = getXmlFromBinary(data, sizeInBytes);
-
-    if (xml != nullptr)
+    if (auto xml = getXmlFromBinary(data, sizeInBytes))
     {
         auto preset = juce::ValueTree::fromXml(*xml);
         auto params = preset.getChildWithName("Params");
 
-        for (auto& param: getParameters())
-        {
-            auto paramTree = params.getChildWithName(PluginHelpers::getParamID(param));
-
-            if (paramTree.isValid())
-                param->setValueNotifyingHost(paramTree["Value"]);
-        }
+        PluginHelpers::loadParamsTree(*this, params);
 
         //Load your non-parameter data now
     }

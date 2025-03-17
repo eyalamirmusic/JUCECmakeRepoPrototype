@@ -4,12 +4,8 @@
 
 namespace PluginHelpers
 {
-//A little helper to get the parameter ID
-inline juce::String getParamID(juce::AudioProcessorParameter* param)
-{
-    if (auto paramWithID = dynamic_cast<juce::AudioProcessorParameterWithID*>(param))
-        return paramWithID->paramID;
+juce::ValueTree saveParamsTree(const juce::AudioProcessor& processor);
 
-    return param->getName(50);
-}
+void loadParamsTree(const juce::AudioProcessor& processor,
+                           const juce::ValueTree& tree);
 } // namespace PluginHelpers
