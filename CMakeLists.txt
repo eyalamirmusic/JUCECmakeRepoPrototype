@@ -26,7 +26,7 @@ if (UniversalBinary)
     set(CMAKE_OSX_ARCHITECTURES "x86_64;arm64" CACHE INTERNAL "")
 endif ()
 
-#static linking in Windows
+#static linking on Windows
 set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 
 #We 'require' that we need juce. If JUCE isn't found, it will revert to what's in
