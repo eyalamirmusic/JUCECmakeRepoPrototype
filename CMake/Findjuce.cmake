@@ -16,4 +16,4 @@ option(JUCE_BUILD_EXAMPLES "Build JUCE Examples" OFF)
 #-DCPM_JUCE_SOURCE="Path_To_JUCE"
 CPMAddPackage(NAME JUCE
         URL
-        "https://github.com/juce-framework/JUCE/archive/refs/tags/8.0.10.zip")
+        "https://github.com/juce-framework/JUCE/archive/refs/tags/8.0.11.zip")
