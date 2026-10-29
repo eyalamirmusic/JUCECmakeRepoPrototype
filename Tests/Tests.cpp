@@ -4,13 +4,13 @@
 template <typename T>
 bool checkMin(T first, T second)
 {
-    return juce::jmin(first, second) == std::min(first, second);
+    return juce::exactlyEqual(juce::jmin(first, second), std::min(first, second));
 }
 
 template <typename T>
 bool checkMax(T first, T second)
 {
-    return juce::jmax(first, second) == std::max(first, second);
+    return juce::exactlyEqual(juce::jmax(first, second), std::max(first, second));
 }
 
 TEST_CASE("Test that juce::jmin works")
