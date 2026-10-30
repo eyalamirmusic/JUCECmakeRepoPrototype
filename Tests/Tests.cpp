@@ -1,5 +1,7 @@
-#include <catch2/catch_test_macros.hpp>
+#include <NanoTest/NanoTest.h>
 #include <juce_core/juce_core.h>
+
+using namespace nano;
 
 template <typename T>
 bool checkMin(T first, T second)
@@ -13,16 +15,16 @@ bool checkMax(T first, T second)
     return juce::exactlyEqual(juce::jmax(first, second), std::max(first, second));
 }
 
-TEST_CASE("Test that juce::jmin works")
+auto jminWorks = test("Test that juce::jmin works") = []
 {
-    REQUIRE(checkMin(5, 7));
-    REQUIRE(checkMin(12, 3));
-    REQUIRE(checkMin(5.31, 5.42));
-}
+    check(checkMin(5, 7));
+    check(checkMin(12, 3));
+    check(checkMin(5.31, 5.42));
+};
 
-TEST_CASE("Test that juce::jmax works")
+auto jmaxWorks = test("Test that juce::jmax works") = []
 {
-    REQUIRE(checkMax(5, 7));
-    REQUIRE(checkMax(12, 3));
-    REQUIRE(checkMax(5.31, 5.42));
-}
+    check(checkMax(5, 7));
+    check(checkMax(12, 3));
+    check(checkMax(5.31, 5.42));
+};

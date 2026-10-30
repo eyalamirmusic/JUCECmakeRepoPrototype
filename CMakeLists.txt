@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.31)
 
 
 project(JUCECMakeRepo)
@@ -45,8 +45,8 @@ if (${BUILD_JUCE_PROTOTYPE_EXAMPLES})
     add_subdirectory(Plugins)
 endif ()
 
-#optionally, we're also adding the unit tests:
-option(BUILD_UNIT_TESTS "Build JUCE prototype examples" OFF)
+#optionally, we're also adding the unit tests (on by default when this is the top level project):
+option(BUILD_UNIT_TESTS "Build unit tests" ${PROJECT_IS_TOP_LEVEL})
 
 if (BUILD_UNIT_TESTS)
     enable_testing()
